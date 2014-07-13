@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<artifactId>tsr</artifactId>
+		<artifactId>tsr-parent</artifactId>
 		<groupId>com.tsr</groupId>
 		<version>0.0.1</version>
 	</parent>
@@ -31,12 +31,6 @@
 			<groupId>com.tsr</groupId>
 			<artifactId>tsr-common</artifactId>
 			<version>${tsrcommon.version}</version>
-		</dependency>
-		
-		<dependency>
-		  <groupId>axis</groupId>
-		  <artifactId>axis</artifactId>
-		  <version>1.4</version>
 		</dependency>
 		
 		<dependency>

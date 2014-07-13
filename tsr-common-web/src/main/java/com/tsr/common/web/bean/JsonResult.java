@@ -1,9 +1,9 @@
-package com.rsos.web.bean;
+package com.tsr.common.web.bean;
 
 
 import java.io.Serializable;
 
-import com.rsos.web.constants.StateCodeConstant;
+import com.tsr.common.web.constants.StateCodeConstant;
 
 
 /**

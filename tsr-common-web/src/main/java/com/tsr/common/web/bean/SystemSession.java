@@ -1,11 +1,11 @@
-package com.rsos.web.bean;
+package com.tsr.common.web.bean;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.rsos.web.util.SessionManager;
+import com.tsr.common.web.util.SessionManager;
 
 /**
  * 自定义Session类

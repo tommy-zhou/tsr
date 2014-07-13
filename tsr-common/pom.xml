@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.tsr</groupId>
-    <artifactId>tsr</artifactId>
+    <artifactId>tsr-parent</artifactId>
     <version>0.0.1</version>
   </parent>
   <artifactId>tsr-common</artifactId>
@@ -60,65 +60,13 @@
 			<version>0.1</version>
 			<scope>provided</scope>
 		</dependency>
-		
-		
-		<dependency>
-            <groupId>org.apache.axis2</groupId>
-            <artifactId>axis2-kernel</artifactId>
-            <version>1.6.2</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.geronimo.specs</groupId>
-                    <artifactId>geronimo-javamail_1.4_spec</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.geronimo.specs</groupId>
-                    <artifactId>geronimo-activation_1.1_spec</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.apache.axis2</groupId>
-            <artifactId>axis2-xmlbeans</artifactId>
-            <version>1.6.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.axis2</groupId>
-            <artifactId>axis2-transport-local</artifactId>
-            <version>1.6.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.axis2</groupId>
-            <artifactId>axis2-transport-http</artifactId>
-            <version>1.6.2</version>
-        </dependency>
-        
-        <dependency>
-          <groupId>org.apache.xmlbeans</groupId>
-          <artifactId>xmlbeans</artifactId>
-          <version>2.3.0</version>
-        </dependency>
         
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>1.4</version>
         </dependency>
-        <dependency>
-            <groupId>com.easeye</groupId>
-			<artifactId>easeye-wsclient</artifactId>
-			<version>13.12.20</version>
-        </dependency>
         
-		<!-- html安全过滤jar -->
-		<dependency>
-           <groupId>com.blogspot</groupId>
-           <artifactId>xssProtect</artifactId>
-           <version>0.1</version>
-       </dependency>
        <dependency>
            <groupId>org.antlr</groupId>
            <artifactId>antlr</artifactId>
@@ -128,7 +76,7 @@
   <distributionManagement>
 		<repository>
 			<id>releases</id>
-			<url>http://172.16.3.248:8080/nexus/content/repositories/releases</url>
+			<url>http://210.73.207.9:8081/nexus/content/repositories/releases</url>
 		</repository>
 	</distributionManagement>
   <build>

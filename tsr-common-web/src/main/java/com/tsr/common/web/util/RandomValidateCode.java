@@ -1,4 +1,4 @@
-package com.rsos.web.util;
+package com.tsr.common.web.util;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.rsos.web.bean.SystemSession;
+import com.tsr.common.web.bean.SystemSession;
+
 
 /**
  * 验证码生成器

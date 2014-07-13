@@ -1,4 +1,4 @@
-package com.rsos.web.util;
+package com.tsr.common.web.util;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 /**

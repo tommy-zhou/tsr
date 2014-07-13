@@ -1,4 +1,4 @@
-package com.rsos.web.constants;
+package com.tsr.common.web.constants;
 
 
 /**

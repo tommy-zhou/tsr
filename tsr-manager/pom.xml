@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<artifactId>tsr</artifactId>
+		<artifactId>tsr-parent</artifactId>
 		<groupId>com.tsr</groupId>
 		<version>0.0.1</version>
 	</parent>
@@ -14,8 +14,6 @@
 	<name>tsr-manager</name>
 
 	<properties>
-		<!-- tsrapi -->
-		<tms.version>0.0.1</tms.version>
 		<tsrapi.version>0.0.1</tsrapi.version>
 		<tsrcommon.version>0.0.1</tsrcommon.version>
 		<ckeditor.version>3.5.3</ckeditor.version>
@@ -24,26 +22,6 @@
 	</properties>
 
 	<dependencies>
-	 <dependency>
-        <groupId>com.rule</groupId>
-        <artifactId>rule-api</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-	 <dependency>
-        <groupId>com.rule</groupId>
-        <artifactId>rule-manager</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-	 <dependency>
-        <groupId>com.tms</groupId>
-        <artifactId>tms-api</artifactId>
-        <version>${tms.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>com.tms</groupId>
-        <artifactId>tms-manager</artifactId>
-        <version>${tms.version}</version>
-    </dependency>
 	
 		<!-- depend on opencommerce api -->
 		<dependency>

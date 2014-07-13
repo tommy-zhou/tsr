@@ -5,7 +5,8 @@ import javax.servlet.ServletContextEvent;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.rsos.comm.util.SpringUtils;
+import com.tsr.comm.util.SpringUtils;
+
 
 
 

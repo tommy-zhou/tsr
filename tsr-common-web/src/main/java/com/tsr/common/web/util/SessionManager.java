@@ -1,4 +1,4 @@
-package com.rsos.web.util;
+package com.tsr.common.web.util;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.data.redis.core.RedisTemplate;
 
-import com.rsos.comm.util.PropertyUtils;
-import com.rsos.comm.util.SpringUtils;
-import com.rsos.comm.util.StringUtils;
-import com.rsos.web.bean.SystemSession;
+import com.tsr.comm.util.PropertyUtils;
+import com.tsr.comm.util.SpringUtils;
+import com.tsr.comm.util.StringUtils;
+import com.tsr.common.web.bean.SystemSession;
 
 
 

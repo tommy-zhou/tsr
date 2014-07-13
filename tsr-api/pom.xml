@@ -1,11 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>com.tsr</groupId>
+	<parent>
+		<groupId>com.tsr</groupId>
+		<artifactId>tsr-parent</artifactId>
+		<version>0.0.1</version>
+	</parent>
 	<artifactId>tsr-api</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1</version>
 	<name>tsr-api</name>
 	<description>api for tsr-api</description>
 
@@ -77,17 +79,17 @@
 			<artifactId>simple-xml</artifactId>
 			<version>2.7.1</version>
 		</dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.1.37</version>
-        </dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.1.37</version>
+		</dependency>
 	</dependencies>
 
 	<distributionManagement>
 		<repository>
 			<id>releases</id>
-			<url>http://192.168.1.252:8081/nexus/content/repositories/releases</url>
+			<url>http://210.73.207.9:8081/nexus/content/repositories/releases</url>
 		</repository>
 	</distributionManagement>
 

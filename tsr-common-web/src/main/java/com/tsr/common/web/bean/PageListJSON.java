@@ -1,4 +1,4 @@
-package com.rsos.web.bean;
+package com.tsr.common.web.bean;
 
 import java.io.Serializable;
 
