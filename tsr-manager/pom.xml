@@ -58,7 +58,7 @@
         </dependency>
         <dependency>
         	<groupId>com.tsr</groupId>
-        	<artifactId>tsr-web</artifactId>
+        	<artifactId>tsr-common-web</artifactId>
         	<version>0.0.1</version>
         </dependency>
 	</dependencies>
