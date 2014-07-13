@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="icon" href="#springUrl('/favicon.ico')" type="image/x-icon" />
+<link rel="shortcut icon" href="#springUrl('/favicon.ico')" type="image/x-icon" />
+<title>家品会后台</title>
+<script type="text/javascript">
+    var leftMenuIndex = "1-1-1"
+        ,leftWindow; 
+    function leftLoad(mainFrame){
+        checkLogin(mainFrame);
+        leftWindow = window.frames["leftFrame"]; 
+    }
+    function checkLogin(mainFrame){
+        if(mainFrame){
+            mainFrame = mainFrame.contentWindow;
+            //防止iframe跨域js错误
+            try{
+                if(mainFrame && mainFrame.location.href.indexOf("login.htm")>0){
+                window.location.href="login.htm";
+                }
+            }catch(e){
+                
+            }
+        }
+    }
+    
+    // 跨域iframe传消息事件（HTML5）
+    window.addEventListener("message", function( event ) { 
+     // 把父窗口发送过来的数据显示在子窗口中
+     if(event.data != "rule_page"){
+        window.location.href="login.htm";
+     }
+    },false);
+</script>
+</head>
+<frameset rows="77,*,45" cols="*" frameborder="no" border="0" framespacing="0">
+  <frame src="top.htm" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame"  onload="checkLogin(this);"/>
+  <frameset cols="222,*" frameborder="no" border="0" framespacing="0">
+    <frame src="about:blank" name="leftFrame"  noresize="noresize" id="leftFrame" title="leftFrame" onload="leftLoad(this);"/>
+    <frame src="about:blank" name="mainFrame" id="mainFrame" title="mainFrame" onload="checkLogin(this);"/>
+  </frameset>
+  <frame src="bottom.htm" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame"  onload="checkLogin(this);"/>
+</frameset>
+<noframes>
+</noframes>
+<body>
+</body>
+</html>

@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Repository and Service layers -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- ========================= Schedule RESOURCE DEFINITIONS ========================= -->
+    <!-- 要调用的工作类 -->
+    <bean id="taskOrderInfo" class="com.rsos.manager.task.TaskOrderInfo"></bean>
+    <bean id="taskOrderReturn" class="com.rsos.manager.task.TaskOrderReturn"></bean>
+    <bean id="taskErpProduct" class="com.rsos.manager.task.TaskErpProduct"></bean>
+    <bean id="taskErpBrand" class="com.rsos.manager.task.TaskErpBrand"></bean>
+    <bean id="taskOrderShip" class="com.rsos.manager.task.TaskOrderShip"></bean>
+    <bean id="taskCouponHistory" class="com.rsos.manager.task.TaskCouponHistory"></bean>
+    <bean id="taskUser" class="com.rsos.manager.task.TaskUser"></bean>
+    <bean id="taskPvAnalysis" class="com.rsos.manager.task.TaskPVAnalysis"></bean>
+    <bean id="taskMail" class="com.rsos.manager.task.TaskMail"></bean>
+    
+    <!-- 同步商品品牌到erp系统 -->
+    <bean id="taskErpBrandJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskErpBrand" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>toSyncErpBrand</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 转移过期的优惠劵 -->
+    <bean id="taskCouponHistoryJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskCouponHistory" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>transferOverdueCoupon</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 同步商品到erp系统 -->
+    <bean id="taskErpProductJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskErpProduct" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>toSyncErpProduct</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 未付款订单自动关闭 -->
+    <bean id="taskOrderCloseOrderJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>closeOrder</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 拆分订单 -->
+    <bean id="taskOrderSplitOrderThenSendERPJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>SplitOrderThenSendERP</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 下发订单 -->
+    <bean id="taskOrdersendOrderToERPJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>sendOrderToERP</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 发货单在途信息修改 -->
+    <bean id="taskOrderUpdateOrderShipmentTrackJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>updateOrderShipmentTrack</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 订单到时自动解挂 -->
+    <bean id="taskOrderAutoUnHoldJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>autoUnHold</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 退单下发到ERP -->
+     <bean id="taskSendReturnOrderToERPJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderReturn" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>sendReturnOrderToERP</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 自动收货确认 -->
+     <bean id="taskUpdateShipStatusJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>updateShipStatus</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 增量拉3小时内唯品会订单 -->
+    <bean id="taskCreateVipOrderJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>createVipOrder</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 增量拉24小时内唯品会订单 -->
+    <bean id="taskCreateVipOrderAllJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>createVipOrderAll</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 48小时未发货生成问题单 -->
+    <bean id="taskTimeoutNotShippmentOrderJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>timeoutNotShippmentOrder</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 发货单转成运单 -->
+    <bean id="taskCreatTmsCarriageJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderShip" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>creatTmsCarriage</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+     <!-- 唯品会临时单转成正式订单 -->
+    <bean id="taskInsertOrderInfoJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>insertOrderInfo</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+     <!-- pv存数据库 -->
+    <bean id="taskUserJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskUser" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>bakUserView</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+     <!-- 分析出用户浏览商品数据 -->
+    <bean id="taskPvAnalysisJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskPvAnalysis" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>analyzeUserView</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 用户购买统计数据更新 -->
+    <bean id="taskGroupCreditAndTotalInfoJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskUser" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>groupCreditAndTotalInfo</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 用户1年内购买数据更新 -->
+    <bean id="taskLastYearInfoJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskUser" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>lastYearInfo</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+        <!-- 唯品会定时发货 -->
+    <bean id="taskVipOrderTimingShipJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderShip" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>vipOrderTimingShip</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+     <!-- 定义调用对象和调用对象的方法 -->
+    <bean id="taskSendNoLoginJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskMail" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>sendMialForLangTimeNoLogin</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+         <!-- 定义调用对象和调用对象的方法 -->
+    <bean id="taskSendCouponEndJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskMail" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>sendMialForCouponEnd</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+   <!-- 每天订单号初始化 -->
+    <bean id="taskOrderSnAutoJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>orderSnAuto</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 商品销量数据累计 -->
+    <bean id="taskSalesCountJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>salesCount</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 优惠券过期 -->
+    <bean id="taskCloseCouponJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>closeCoupon</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 定义调用对象和调用对象的方法 -->
+    <bean id="taskSpecialPriceJob"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>specialPrice</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 过期等级卡调整等级 -->
+    <bean id="taskLowerUserGroupJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskUser" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>lowerUserGroup</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+     <!-- 未发货问题单转正常单 -->
+    <bean id="taskToNormalOrderJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="taskOrderInfo" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>toNormalOrder</value>
+        </property>
+        <!-- 不要并发，如果一个任务未结束不要开启下一个 -->
+        <property name="concurrent" value="false"></property>
+    </bean>
+    
+    <!-- 定义触发时间 -->
+   
+    <bean id="taskOrderCloseOrderDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskOrderCloseOrderJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>10 * * * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskCouponHistoryJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskCouponHistoryJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0 1 * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskOrderSplitOrderThenSendERPDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskOrderSplitOrderThenSendERPJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>20 * * * * ?</value>
+        </property>
+    </bean>
+    
+     <bean id="taskOrdersendOrderToERPDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskOrdersendOrderToERPJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>30 0-59/2 * * * ?</value>
+        </property>
+    </bean>
+    
+     <bean id="taskOrderUpdateOrderShipmentTrackDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskOrderUpdateOrderShipmentTrackJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>40 2/30 * * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskSendReturnOrderToERPDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskSendReturnOrderToERPJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>50 0-59/5 * * * ?</value>
+        </property>
+    </bean>
+    
+    
+    <bean id="taskErpBrandToERPDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskErpBrandJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0/5 * * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskErpProductToERPDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskErpProductJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 2/5 * * * ?</value>
+        </property>
+    </bean>
+    
+    
+    <bean id="taskUpdateShipStatusDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskUpdateShipStatusJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0 0/1 * * ?</value>
+        </property>
+    </bean>
+    
+    
+    <bean id="taskCreateVipOrderDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskCreateVipOrderJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 3/5 * * * ?</value>
+        </property>
+    </bean>
+    <bean id="taskCreateVipOrderAllDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskCreateVipOrderAllJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 6 0/3 * * ?</value>
+        </property>
+    </bean>
+   <bean id="taskTimeoutNotShippmentOrderDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskTimeoutNotShippmentOrderJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0 0/6 * * ?</value>
+        </property>
+    </bean>
+    
+   <bean id="taskCreatTmsCarriageDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskCreatTmsCarriageJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0/9 * * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskInsertOrderInfoDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskInsertOrderInfoJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0/5 * * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskAutoUnHoldDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskOrderAutoUnHoldJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+                <value>0 0/5 * * * ?</value>
+        </property>
+    </bean>
+    <bean id="taskUserJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskUserJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0/5 * * * ?</value>
+        </property>
+    </bean>
+
+    <bean id="taskPvAnalysisJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskPvAnalysisJob" />
+        </property>
+        <!-- TODO cron表达式 修改为每天一次-->
+        <property name="cronExpression">
+            <value>0 */30 * * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskGroupCreditAndTotalInfoJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskGroupCreditAndTotalInfoJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0 3 * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskLastYearInfoJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskLastYearInfoJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0 4 * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskVipOrderTimingShipJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskVipOrderTimingShipJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0/30 * * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskSendNoLoginJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskSendNoLoginJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0 5 * * ?</value>
+        </property>
+    </bean>
+       <bean id="taskSendCouponEndJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskSendCouponEndJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0 5 * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskOrderSnAutoJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskOrderSnAutoJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>1 0 0 * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskSalesCountJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskSalesCountJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 1 0 * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskCloseCouponJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskCloseCouponJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0 1 * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskSpecialPriceJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskSpecialPriceJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 30 1 * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="taskLowerUserGroupJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskLowerUserGroupJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 30 3 * * ?</value>
+        </property>
+    </bean>
+    
+     <bean id="taskToNormalOrderJobDoTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="taskToNormalOrderJob" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 30 4 * * ?</value>
+        </property>
+    </bean>
+    
+    <!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
+    <bean id="startQuertz" lazy-init="true" autowire="no"
+        class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="taskOrderCloseOrderDoTime" />
+                <ref bean="taskOrderSplitOrderThenSendERPDoTime" />
+                <ref bean="taskOrdersendOrderToERPDoTime" />
+                <ref bean="taskOrderUpdateOrderShipmentTrackDoTime" />
+                <ref bean="taskSendReturnOrderToERPDoTime" />
+                <ref bean="taskErpBrandToERPDoTime" />
+                <ref bean="taskErpProductToERPDoTime" />
+                <ref bean="taskUpdateShipStatusDoTime" />
+                <ref bean="taskCreateVipOrderDoTime" />
+                <ref bean="taskTimeoutNotShippmentOrderDoTime" />
+                <ref bean="taskCreatTmsCarriageDoTime" /> 
+                <ref bean="taskInsertOrderInfoDoTime" />
+                <ref bean="taskCreateVipOrderAllDoTime" />
+                <ref bean="taskAutoUnHoldDoTime" />
+                <ref bean="taskCouponHistoryJobDoTime" />
+                <ref bean="taskUserJobDoTime" />
+                <ref bean="taskPvAnalysisJobDoTime"/>
+                <ref bean="taskGroupCreditAndTotalInfoJobDoTime" />
+                <ref bean="taskLastYearInfoJobDoTime" />
+                <ref bean="taskVipOrderTimingShipJobDoTime" />
+                <ref bean="taskSendNoLoginJobDoTime" /> 
+                <ref bean="taskSendCouponEndJobDoTime" />
+                <ref bean="taskOrderSnAutoJobDoTime" />
+                <ref bean="taskSalesCountJobDoTime" />
+                <ref bean="taskCloseCouponJobDoTime" />
+                <ref bean="taskSpecialPriceJobDoTime" />
+                <ref bean="taskLowerUserGroupJobDoTime" />
+                <ref bean="taskToNormalOrderJobDoTime" />
+            </list>
+        </property>
+    </bean>
+</beans>
+
+<!--
+        附表： “0 0 12 * * ?” 每天中午12点触发 “0 15 10 ? * *” 每天上午10:15触发 “0 15 10 * *
+        ?” 每天上午10:15触发 “0 15 10 * * ? *” 每天上午10:15触发 “0 15 10 * * ? 2005″
+        2005年的每天上午10:15触发 “0 * 14 * * ?” 在每天下午2点到下午2:59期间的每1分钟触发 “0 0/5 14 * *
+        ?” 在每天下午2点到下午2:55期间的每5分钟触发 “0 0/5 14-18 * * ?”
+        在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发 “0 0-5 14 * * ?”
+        在每天下午2点到下午2:05期间的每1分钟触发 “0 10,44 14 ? 3 WED” 每年三月的星期三的下午2:10和2:44触发 “0
+        15 10 ? * MON-FRI” 周一至周五的上午10:15触发 “0 15 10 15 * ?” 每月15日上午10:15触发 “0
+        15 10 L * ?” 每月最后一日的上午10:15触发 “0 15 10 ? * 6L” 每月的最后一个星期五上午10:15触发 “0
+        15 10 ? * 6L 2002-2005″ 2002年至2005年的每月的最后一个星期五上午10:15触发 “0 15 10 ? *
+        6#3″ 每月的第三个星期五上午10:15触发
+    -->

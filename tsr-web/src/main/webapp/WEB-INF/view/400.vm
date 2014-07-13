@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>出错页</title>
+<meta content="红星家品会,hxshop,打折,品牌折扣,限时抢购,特卖" name="keywords">
+<meta content="红星家品会，品牌家居特卖网。红星家品会商品囊括家居、家具、建材等上千品牌。100%正品、低价、7天无条件退货。" name="description">
+
+<link media="screen" href="#jsCssUrl('/resource/??/css/index.css,css/style.css,css/frame.css')" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<input type="hidden" id="err_code" value="400" />
+<input type="hidden" id="topMenuNo" value="0" />
+#set( $showModel = "2" ) <div class="top">
+    #parse('comm/top.vm')
+</div><!--头部 内容在top.js-->
+<div style="width:1190px; margin:0 auto;">
+    <div style="margin-left:106px;"><img src="#resourceUrl('/static/img/error.jpg')" /></div>
+    
+</div>
+<div style="width:400px; margin:0 auto; font-size:14px; color:#686868"> 
+    很抱歉，您要访问的页面不存在。<br />
+    可能已经删除、更名或程序出现错误暂时无法访问。<br /><br />
+    您可以选择：<a href="#springUrl('/')">跳转到首页</a>
+</div>
+<div style="width:400px; margin:0 auto; font-size:14px; color:#686868">系统将在<font id="secondDivBtn" style="font-size:14px; color:red;">5</font>秒后为您自动跳转到首页</div>
+<div style="height:200px;"></div>
+<script type="text/javascript">
+    var wait_time = 5; //设置秒数(单位秒)
+    var secs_time = 0;         
+    for(var i=1;i<=wait_time;i++) {
+        window.setTimeout("sTimer("+i+")",i*1000);
+    }
+    function sTimer(num) {
+        if(num==wait_time) {
+            window.location.href="#springUrl('/')";
+        } else {
+            secs_time=wait_time-num;
+            $("#secondDivBtn").html(secs_time);
+        }
+    }
+</script>
+<div class="bottom">
+    #parse('comm/bottom.vm')
+</div><!--尾部 内容在bottom.js-->
+
+</body>
+</html>

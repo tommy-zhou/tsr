@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd  
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	default-lazy-init="true">
+
+	<!-- 启用spring mvc 注解 -->
+	<context:annotation-config />
+
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="order" value="1" />
+	</bean>
+
+	<context:component-scan base-package="com.hxshop.manager">
+		<context:include-filter type="regex"
+			expression="com.hxshop.manager.controller.*" />
+	</context:component-scan>
+
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="customArgumentResolver">
+			<bean class="com.rsos.comm.custom.BeanArgumentResolver" />
+		</property>
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+				<bean
+					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+					<property name="supportedMediaTypes" value="application/json;charset=UTF-8" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- velocity config -->
+	<bean id="velocityConfigurer"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath">
+			<value>WEB-INF/view</value>
+		</property>
+		<property name="velocityProperties">
+			<props>
+				<prop key="input.encoding">UTF-8</prop>
+				<prop key="output.encoding">UTF-8</prop>
+				<prop key="velocimacro.library">comm/macros.vm</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 处理velocity布局 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="cache" value="true" />
+		<property name="prefix" value="" />
+		<property name="suffix" value=".vm" />
+		<property name="contentType" value="text/html; charset=utf-8"></property>
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="requestContextAttribute" value="rc" />
+		<property name="toolboxConfigLocation" value="/WEB-INF/velocity_toolbox.xml" />
+	</bean>
+
+	<bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="error"></property>
+		<property name="defaultStatusCode" value="500"></property>
+		<property name="statusCodes">
+			<props>
+				<prop key="400">400</prop>
+				<prop key="error">500</prop>
+			</props>
+		</property>
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.sql.SQLException">error</prop>
+				<prop key="org.springframework.web.bind.ServletRequestBindingException">error</prop>
+				<prop key="java.lang.IllegalArgumentException">error</prop>
+				<prop key="org.springframework.validation.BindException">error</prop>
+				<prop key="java.lang.ClassNotFoundException">error</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- exception 跳转控制 -->
+	<bean
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="prefix" value="/WEB-INF/view/"></property>
+		<property name="suffix" value=".vm"></property>
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置上传文件大小的参数 -->
+		<property name="maxUploadSize" value="10000000" />
+	</bean>
+
+	<!-- css,js 都会使用压缩文件管理，可以不配置，此处配置方便开发css，js调试 -->
+	<mvc:resources location="/static/css/" mapping="/static/css/**" />
+	<mvc:resources location="/static/js/" mapping="/static/js/**" />
+	<mvc:resources location="/static/img/" mapping="/static/img/**" />
+	<mvc:resources location="/static/swfupload/" mapping="/static/swfupload/**" />
+	<mvc:resources location="/photos/" mapping="/photos/**" />
+	<mvc:resources location="/static/js/demo/" mapping="/static/js/demo/**" />
+	<mvc:resources location="/*.ico" mapping="/**" />
+	
+	<!-- ================================================================== -->
+	<mvc:resources location="/resource/css/" mapping="/resource/css/**" />
+	<mvc:resources location="/resource/js/" mapping="/resource/js/**" />
+	<mvc:resources location="/resource/img/" mapping="/resource/img/**" />
+
+	<!-- photos 到时会放在fastdns上面 -->
+	<mvc:resources location="/static/img/" mapping="/static/img/**" />
+	<mvc:resources location="/static/img/flash" mapping="/static/img/flash/**" />
+
+	<!--首页路径重定向 -->
+	<!-- <mvc:view-controller path="/" view-name="redirect:/index.htm"/> -->
+
+
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- mvc 安全过滤路径 -->
+			<mvc:mapping path="/**" />
+			<bean class="com.hxshop.manager.web.interceptor.SecurityInterceptor">
+				<property name="includedUrls">
+					<list>
+						<value>.*/myBrand/favoriteBrand.htm</value>
+						<value>.*/myBrand/doBrandCancel.htm</value>
+						<value>.*/creditHis/creditLogHis.htm</value>
+						<value>.*/credit/creditInit.htm</value>
+						<value>.*/credit/credit.htm</value>
+						<value>.*/user/userInfoEdit.htm</value>
+						<value>.*/user/doUserInfoEdit.htm</value>
+						<value>.*/user/getUserInfo.htm</value>
+						<value>.*/user/passwordEdit.htm</value>
+						<value>.*/user/doPasswordEdit.htm</value>
+						<value>.*/coupon/coupon.htm</value>
+						<value>.*/coupon/binding.htm</value>
+						<value>.*/userAddress/serchAddress.htm</value>
+						<value>.*/userAddress/addAddress.htm</value>
+						<value>.*/userAddress/editAddress.htm</value>
+						<value>.*/userAddress/deleteAddress.htm</value>
+						<value>.*/userAddress/defaultBilling.htm</value>
+						<value>.*/userAddress/defaultAddress.htm</value>
+						<value>.*/userAddress/getSelect.htm</value>
+						<value>.*/collect/myCollecting.htm</value>
+						<!-- 验证邮箱 start wxl -->
+						<value>.*/user/tovalidemail.htm</value>
+						<value>.*/user/sendvalidemail.htm</value>
+						<value>.*/user/sendvalidemailcx.htm</value>
+						<value>.*/user/tonewemail.htm</value>
+						<value>.*/user/sendnewemail.htm</value>
+						<value>.*/user/sendnewemailcx.htm</value>
+						<value>.*/user/toresetemail.htm</value>
+						<value>.*/user/sendresetemail.htm</value>
+						<value>.*/user/sendresetemailcx.htm</value>
+						<value>.*/modphone/modifyphone.htm</value>
+						<value>.*/modphone/sendPhoneKey.htm</value>
+						<value>.*/modphone/autheSmsAjax.htm</value>
+						<value>.*/modphone/validphone.htm</value>
+						<value>.*/modphone/phoneBindingAjax.htm</value>
+						<value>.*/modphone/validKeyAjax.htm</value>
+						<value>.*/personalCenter/infoCenter.htm</value>
+						<value>.*/personalCenter/searchPersonalInfo.htm</value>
+						<value>.*/order/myOrder.htm</value>
+						<value>.*/order/orderDetail.htm</value>
+						<value>.*/order/toReceiptGoods.htm</value>
+						<value>.*/order/toStopOrder.htm</value>
+						<value>.*/order/cancelOrder.htm</value>
+						<value>.*/order/toPay.htm</value>
+						<value>.*/order/placeOrder.htm</value>
+						<value>.*/shopCart/myShopCart.htm</value>
+						<value>.*/shopCart/confirmOrder.htm</value>
+						<value>.*/shopCart/gotoCheck.htm</value>
+						<value>.*/orderReturn/searchRefundableOrder.htm</value>
+						<value>.*/orderReturn/returnRec.htm</value>
+						<value>.*/orderReturn/toRegister.htm</value>
+						<value>.*/orderReturn/creOrdRet.htm</value>
+						<value>.*/orderReturn/uploadImg.htm</value>
+						<value>.*/orderReturn/returnStatus.htm</value>
+						<value>.*/orderReturn/addExpressInfo.htm</value>
+						<value>.*/alipay/alipay.htm</value>
+						<value>.*/unionpay/unionpay.htm</value>
+						<value>.*/yipay.htm</value>
+						<value>.*/icbcSubmit.htm</value>
+						
+						<value>.*/eventAlipay/alipay.htm</value>
+						<value>.*/eventUnionPay/unionpay.htm</value>
+						<value>.*/eventYiPay/yipay.htm</value>
+						<value>.*/eventIcbcPay/icbcSubmit.htm</value>
+                        <value>.*/order/toPayEvent.htm</value>
+					</list>
+				</property>
+				<property name="crossDomainUrls">
+					<list>
+						<value>.*/getCartCount.htm</value>
+						<value>.*/showExtCategoryTree.htm</value>
+						<value>.*/getnickname.htm</value>
+						<value>.*/search/suggest.htm</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<!-- mvc message拦截 -->
+			<mvc:mapping path="/**" />
+			<bean class="com.hxshop.manager.web.interceptor.AttributeInterceptor">
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+</beans>  

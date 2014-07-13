@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>红星家品会：设计师说</title>
+#parse('comm/head.vm')
+<meta content="红星家品会,hxshop,打折,品牌折扣,限时抢购,特卖" name="keywords">
+<meta content="红星家品会，品牌家居特卖网。红星家品会商品囊括家居、家具、建材等上千品牌。100%正品、低价、7天无条件退货。" name="description">
+<link media="screen" href="#jsCssUrl('/resource/??/css/index.css,css/design.css,css/frame.css')" rel="stylesheet" type="text/css">
+
+<script>
+$(function(){
+	
+})
+</script>
+
+</head>
+<body bgcolor="#fafafa">
+<input type="hidden" id="topMenuNo" value="6" />
+
+#set( $showModel = "2" ) <div class="top">
+    #parse('comm/top.vm')
+</div>
+<script type="text/javascript" src="#jsCssUrl('/resource/??/js/jquery.masonry.min.js')"></script><!--,top.js,bottom.js-->
+
+<div class="ds_container">
+	<div class="ds_banner"><img src="#resourceUrl('/static/img/ds_banner.jpg')" width="1190" height="300" /></div>
+    
+    <!--
+    <div class="ds_nav">
+    	<a href="" class="ds_nav_hit">全部功略</a>
+        <a href="">设计施工</a>
+        <a href="">选材知识</a>
+        <a href="">装饰搭配</a>
+    </div>
+    <div class="ds_fenlei">
+    	排序：
+    	<a href="">最新</a>
+        <a href="">最热</a>
+    </div>
+    -->
+</div>
+
+	<div class="ds_pubuBox">
+        <div class="ds_pubuliu">
+            <div class="pb_border" onclick="window.open('#springUrl('/sj1.htm')');">
+            	<div class="pb_img"><img src="#resourceUrl('/static/img/sjss/sjss1.jpg')" width="286" height="212"/></div>
+                <div class="pb_title">怀旧时光：带你欣赏祖母设计的客厅</div>
+                <div class="pb_subtitle">我的祖母非常酷，虽然已经91岁了，但是比任何人都时尚。下面，就带您欣赏一下祖母设计的客厅......</div>
+            </div>
+            
+            <div class="pb_border" onclick="window.open('#springUrl('/sj2.htm')');">
+            	<div class="pb_img"><img src="#resourceUrl('/static/img/sjss/sjss2.jpg')" width="286" height="381"/></div>
+                <div class="pb_title">巧妙存储 让客厅美观与实用并举</div>
+                <div class="pb_subtitle">看看灵巧的存储方案是如何让这些小客厅变得既美观又实用的......</div>
+            </div>
+            
+            <!--
+            <div class="pb_border" onclick="window.open('sj3.html');">
+            	<div class="pb_img"><img src="static/img/sjss/sjss3.jpg" width="286" height="178"/></div>
+                <div class="pb_title">6招教你打造客厅好风水 别墅业主不要错过</div>
+                <div class="pb_subtitle">好风水带来好运气，对于客厅的装修，你了解如下风水禁忌吗？......</div>
+            </div>
+           
+           <div class="pb_border" onclick="window.open('sj4.html');">
+            	<div class="pb_img"><img src="static/img/sjss/sjss4.jpg" width="286" height="187"/></div>
+                <div class="pb_title">8个小窍门让你的客厅焕然一新</div>
+                <div class="pb_subtitle">小改变，大变化。只需几个小小的改变，你的客厅就会焕然一新啦......</div>
+            </div>
+            -->
+            
+            <div class="pb_border" onclick="window.open('#springUrl('/sj5.htm')');">
+            	<div class="pb_img"><img src="#resourceUrl('/static/img/sjss/sjss5.jpg')" width="286" height="190"/></div>
+                <div class="pb_title">合理布局客厅 打造绝妙视听效果</div>
+                <div class="pb_subtitle">巧妙布置房间，既能做饭、看电视两不误，又能让家人各得其乐，互不干扰......</div>
+            </div>
+            
+            <div class="pb_border" onclick="window.open('#springUrl('/sj6.htm')');">
+            	<div class="pb_img"><img src="#resourceUrl('/static/img/sjss/sjss6.jpg')" width="286" height="215"/></div>
+                <div class="pb_title">卧室灯光巧装饰 运用多重光源打造明亮空间</div>
+                <div class="pb_subtitle">卧室灯光不宜单一，丰富的光线才能使空间更具层次感......</div>
+            </div>
+            
+            <div class="pb_border" onclick="window.open('#springUrl('/sj7.htm')');">
+            	<div class="pb_img"><img src="#resourceUrl('/static/img/sjss/sjss7.jpg')" width="286" height="286"/></div>
+                <div class="pb_title">卧室床头背景墙巧设计 助你打造温馨卧室空间</div>
+                <div class="pb_subtitle">卧室的背景板设计也相当重要，如何设计？且看下面文章为大家带来的新看点......</div>
+            </div>
+           
+           <!--
+           <div class="pb_border" onclick="window.open('sj8.html');">
+            	<div class="pb_img"><img src="static/img/sjss/sjss8.jpg" width="286" height="190"/></div>
+                <div class="pb_title">地下室大变脸 6款地下室变身温馨卧室</div>
+                <div class="pb_subtitle">如何把卧室装修得时尚而又不失温馨是每个人的梦想，其实只要懂得相关的搭配技巧，地下室也能布置出自己心仪的卧室风格......</div>
+            </div>
+            -->
+            
+        
+            <div class="pb_border" onclick="window.open('#springUrl('/sj9.htm')');">
+            	<div class="pb_img"><img src="#resourceUrl('/static/img/sjss/sjss9.jpg')" width="286" height="220"/></div>
+                <div class="pb_title">放弃主灯照明 均匀灯光让卧室光线更丰满</div>
+                <div class="pb_subtitle">合理的灯光布局使卧室光线均匀，维持空间的平衡感......</div>
+            </div>
+              
+              
+              <div class="pb_border" onclick="window.open('#springUrl('/sj13.htm')');">
+            	<div class="pb_img"><img src="#resourceUrl('/static/img/sjss/sjss13.jpg')" width="286" height="190"/></div>
+                <div class="pb_title">一周厨房之星：阁楼仓库巧变厨房</div>
+                <div class="pb_subtitle">简约时尚，加上一间隐藏的餐具室，让这间厨房如画的布局和工业化风格的装饰形成鲜明对比......</div>
+            </div>
+              <!--  
+            <div class="pb_border" onclick="window.open('sj10.html');">
+            	<div class="pb_img"><img src="static/img/sjss/sjss10.jpg" width="286" height="190"/></div>
+                <div class="pb_title">厨房收纳8大法 让狼藉一扫光</div>
+                <div class="pb_subtitle">厨房是家里最容易变乱的地方，8大收纳窍门让混乱局面一去不返......</div>
+            </div>
+            -->
+            <!--
+            <div class="pb_border" onclick="window.open('sj11.html');">
+            	<div class="pb_img"><img src="static/img/sjss/sjss11.jpg" width="286" height="432"/></div>
+                <div class="pb_title">黄铜洗碗池让厨房倍添“铜趣”</div>
+                <div class="pb_subtitle">有没有想过安装一款趣味无限的黄铜洗碗池呢？......</div>
+            </div>
+           
+           <!--
+           <div class="pb_border" onclick="window.open('sj12.html');">
+            	<div class="pb_img"><img src="static/img/sjss/sjss12.jpg" width="286" height="190"/></div>
+                <div class="pb_title">专家为你揭秘厨房装修中的对与错</div>
+                <div class="pb_subtitle">厨房装修的遗憾屡有发生，今天为大家分享一些厨房装修中常见的问题，一起来看看吧！......</div>
+            </div>
+            
+			<div class="pb_border" onclick="window.open('sj13.html');">
+            	<div class="pb_img"><img src="static/img/sjss/sjss13.jpg" width="286" height="190"/></div>
+                <div class="pb_title">一周厨房之星：阁楼仓库巧变厨房</div>
+                <div class="pb_subtitle">简约时尚，加上一间隐藏的餐具室，让这间厨房如画的布局和工业化风格的装饰形成鲜明对比......</div>
+            </div>
+			
+			<div class="pb_border" onclick="window.open('sj14.html');">
+            	<div class="pb_img"><img src="static/img/sjss/sjss14.jpg" width="286" height="215"/></div>
+                <div class="pb_title">高脚长凳 让厨房岛台大放光彩</div>
+                <div class="pb_subtitle">是该高脚长凳大显身手的时候啦！它们外表温馨，又很实用，是点燃厨房岛台温暖气氛的餐椅的首选......</div>
+            </div>
+			
+
+
+			<div class="pb_border" onclick="window.open('sj18.html');">
+            	<div class="pb_img"><img src="static/img/sjss/sjss18.jpg" width="286" height="435"/></div>
+                <div class="pb_title">10款浴室设计为你提供隐私保护</div>
+                <div class="pb_subtitle">带屏风、隔墙和双重功能的隔板为你使用浴室时提供更多的隐私保护......</div>
+            </div>
+
+			<div class="pb_border" onclick="window.open('sj17.html');">
+            	<div class="pb_img"><img src="static/img/sjss/sjss17.jpg" width="286" height="215"/></div>
+                <div class="pb_title">九大要点在卫浴装修时一定要注意</div>
+                <div class="pb_subtitle">卫浴装修要讲究实用，设计师在为别墅业主设计时，首先要把基础工作打牢才能让后续装修、装饰进行得更顺利......</div>
+            </div>
+			
+			<div class="pb_border" onclick="window.open('sj16.html');">
+            	<div class="pb_img"><img src="static/img/sjss/sjss16.jpg" width="286" height="427"/></div>
+                <div class="pb_title">13个窍门让你的浴室焕然一新</div>
+                <div class="pb_subtitle">一面崭新的镜子、一条新地毯甚至一个小小的柜门把手就可以轻松让你的浴室焕然一新......</div>
+            </div>
+			
+			<div class="pb_border" onclick="window.open('sj15.html');">
+            	<div class="pb_img"><img src="static/img/sjss/sjss15.jpg" width="286" height="143"/></div>
+                <div class="pb_title">不只是洗浴：超大窗户让浴室风光大好</div>
+                <div class="pb_subtitle">看得见大自然美丽风景的浴室，你想不想一睹风采呢？......</div>
+            </div>
+            -->
+            
+        </div>
+    </div>
+
+
+
+
+
+
+
+<div class="bottom">#parse('comm/bottom.vm')</div><!--尾部 内容在bottom.js-->
+<script>
+$(document).ready(function() {
+    $('.ds_pubuliu').masonry({
+        itemSelector:'.ds_pubuliu div',
+        columnWidth:299
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<toolbox>
+	<xhtml>true</xhtml>
+	<tool>
+		<key>dateTimeUtil</key>
+		<scope>application</scope>
+		<class>com.rsos.comm.util.DateTimeUtils</class>
+	</tool>
+	<tool>
+        <key>staticSourcePathUtil</key>
+        <scope>application</scope>
+        <class>com.rsos.comm.util.StaticSourcePathUtil</class>
+    </tool>
+	<tool>
+        <key>amountUtil</key>
+        <scope>application</scope>
+        <class>com.rsos.comm.util.AmountUtils</class>
+    </tool>
+    <tool>
+        <key>date</key>
+        <scope>application</scope>
+        <class>org.apache.velocity.tools.generic.DateTool</class>
+    </tool>
+</toolbox>

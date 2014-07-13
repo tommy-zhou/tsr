@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>红星家品会：用户登录</title>
+#parse('comm/head.vm')
+
+<script type="text/javascript" src="#jsCssUrl('/resource/??/js/constants.js,js/jquery.js')"></script>
+<link media="screen" href="#jsCssUrl('/resource/??/css/register.css,css/frame.css')" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div id="login">
+     <h2><a href="#springUrl('/')"><img src="#resourceUrl('/static/img/logo.png')" alt="红星家品会--品牌家居特卖网" /></a></h2>
+     <div class="login-bg">
+       <div class="login-box" style="position:relative;">
+         <form  id="loginForm" name="login" action="#springUrl('/doLogin.htm')" method="post" onkeydown="if(event.keyCode==13){$('#login_button').click();}">
+          <div style="position:absolute; left:376px; top:260px; cursor:pointer;" onclick="window.location.href='#springUrl('/reg4phone.htm')'"><img src="#resourceUrl('/static/img/mfzc.png')" /></div><!--免费注册-->
+          <div class="check" id="loginMessage" >$!loginMessage</div>
+          <div class="item1">
+              <input type="text" name="loginVO.account" value="$!{loginVO.account}" id="account" tabindex="1" maxlength="50"/>
+              <i></i>
+          </div>
+          <div class="item2">
+              <input type="password" name="loginVO.password" id="password" tabindex="2" maxlength="16"/>
+              <i></i>
+          </div>
+          <div><a href="#springUrl('/pwd/forgetpwd.htm')">忘记密码？</a></div>
+          <div class="item3" style="margin-top:6px;">
+             <input type="text" id="verifycode" name="loginVO.verifycode" tabindex="3" maxlength="4"/> 
+             <img id="validateCodeImage" src="#springUrl('/validateCodeImage.htm')" /><span class="spanspace"></span><a href="javascript:void(0);" id="validateCodeImage1">看不清？换一张</a>
+          </div>
+          <input type="button" style="margin-top:20px;" value="登 录" id="login_button"/>
+          </form>
+           
+          <h3>使用合作网站账号登录红星家品会:</h3>
+          <div id="loginMethod"><a href="#springUrl('/qqLogin.htm')">QQ</a> | 
+                                <a href="#springUrl('/weiboLogin/weiboLogin.htm')">新浪</a> | 
+                                <a href="#springUrl('/alipayLogin/alipayLogin.htm')">支付宝</a> | 
+                                <!--<a href="">百度</a> | -->
+                                <a href="#springUrl('/qihooLogin/qihooLogin.htm')">360</a> |  
+                                <a href="#springUrl('/RennLogin/authorize.htm')">人人</a> 
+                                <!--|  
+                                <a href="#springUrl('/WyLogin/authorize.htm')">网易</a> </div>
+          
+          <p class="cooperate">
+			<a href="#springUrl('/qqLogin.htm')" id="qq"></a>
+		    <a href="#springUrl('/qihooLogin/qihooLogin.htm')" id="qihoo"></a>
+            <a href="#springUrl('/RennLogin/authorize.htm')" id="renn"></a>
+            <a href="#springUrl('/WyLogin/authorize.htm')" id="wy"></a>
+            -->
+		  </p>
+       </div>
+     </div>
+  </div>
+<script>
+
+    jQuery(document).ready(function($) {
+            
+        $("#login_button").click(function(){
+            if(checkForm()){
+                $("#loginForm").submit();
+            }
+        });
+        
+         //光标的位置设定
+         var account = $("#account").val();
+         var password = $("#password").val();
+         var verifycode = $("#verifycode").val();
+         if(account == "" || account == null){
+            $("#account").focus();
+         }else if(password == "" || password == null){
+            $("#password").focus();
+         }else if(verifycode == "" || verifycode == null){
+            $("#verifycode").focus();
+         }
+             
+    });
+    
+    function checkForm(){
+        //账号非空、格式check
+        var account = $("#account").val();
+        if ( account == "" ){
+            $('#loginMessage').html("账号不能为空!");
+            $("#account").focus();
+            return false;
+        }
+        
+        if ( account.length > 50){
+            $('#loginMessage').html("账号长度不能大于50位!");
+            $("#account").focus();
+            return false;
+        }
+        
+        var regex_email_mobilephone = Constants.emailOrMobilephoneRegex;
+        
+        if(!regex_email_mobilephone.test(account)){
+            $('#loginMessage').html("请输入正确的登录账号(邮箱、手机号)!");
+            $("#account").focus();
+            return false;
+        }
+        
+        //密码非空check 
+        var password = $("#password").val();
+        if ( password == "" ){
+            $('#loginMessage').html("密码不能为空!");
+            $("#password").focus();
+            return false;
+        }
+    
+        //验证码非空check
+        var verifycode = $("#verifycode").val();
+        if ( verifycode == "" ){
+            $('#loginMessage').html("验证码不能为空!");
+            $("#verifycode").focus();
+            return false;
+        }
+        return true;
+    }
+    
+</script>
+
+<div style="position:absolute; bottom:0px;display:none;">
+    <script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ff3e3a17038d619b4d78740732c6f65d1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    
+    <script type="text/javascript" >                                
+    var _oztime = (new Date()).getTime(); 
+    </script>
+    ## 99click 监测脚本文件 BEGIN
+    <script language="JavaScript" src="#jsCssUrl('/resource/js/o_code.js')">
+    </script>
+    ## 99click 监测脚本文件 END
+    
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-43860884-2']);
+      _gaq.push(['_setDomainName','.hxshop.com']);
+      _gaq.push(['_addOrganic', 'baidu', 'word']);
+      _gaq.push(['_addOrganic', 'baidu', 'kw']);
+      _gaq.push(['_addOrganic', 'baidu', 'wd']);
+      _gaq.push(['_addOrganic', 'baidu', 'q1']);
+      _gaq.push(['_addOrganic', 'baidu', 'q2']);
+      _gaq.push(['_addOrganic', 'baidu', 'q3']);
+      _gaq.push(['_addOrganic', 'baidu', 'q4']);
+      _gaq.push(['_addOrganic', 'baidu', 'q5']);
+      _gaq.push(['_addOrganic', 'baidu', 'q6']);
+      _gaq.push(['_addOrganic', 'baidu', 's']);
+      _gaq.push(['_addOrganic', 'm.baidu', 'word']);
+      _gaq.push(['_addOrganic', 'wap.baidu', 'word']);
+      _gaq.push(['_addOrganic', 'bing', 'q']);
+      _gaq.push(['_addOrganic', 'soso', 'w']);
+      _gaq.push(['_addOrganic', 'wap.soso.com', 'key']);
+      _gaq.push(['_addOrganic', '3721', 'name']);
+      _gaq.push(['_addOrganic', 'youdao', 'q']);
+      _gaq.push(['_addOrganic', 'so.360.cn', 'q']);
+      _gaq.push(['_addOrganic', '360so', 'q']);
+      _gaq.push(['_addOrganic', '360sou', 'q']);
+      _gaq.push(['_addOrganic', 'vnet', 'kw']);
+      _gaq.push(['_addOrganic', 'sogou', 'query']);
+      _gaq.push(['_addOrganic', 'ucweb', 'keyword']);
+      _gaq.push(['_addOrganic', 'ucweb', 'word']);
+      _gaq.push(['_addOrganic', '114so', 'kw']);
+      _gaq.push(['_addOrganic', 'glb.uc.cn', 'keyword']);
+      _gaq.push(['_addOrganic', 'so.com', 'q']); 
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+	  
+	  $(document).ready(function(){
+			var referUrl = '$!{request.getHeader("Referer")}';
+    		jQuery.ajax({
+                async : true,
+                type : "post" ,
+				data: {referUrl:referUrl},
+                url : '#springUrl("/viewInfo.htm")',
+                success : function(json) {
+                },
+                error:function(){
+                }
+            });
+		});
+    
+    </script>
+</div>
+</body>
+</html>

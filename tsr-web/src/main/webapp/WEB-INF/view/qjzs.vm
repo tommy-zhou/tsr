@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>红星家品会：情景展示</title>
+<style>
+    a{color:#fff;}
+</style>
+#parse('comm/head.vm')
+<meta content="红星家品会,hxshop,打折,品牌折扣,限时抢购,特卖" name="keywords">
+<meta content="红星家品会，品牌家居特卖网。红星家品会商品囊括家居、家具、建材等上千品牌。100%正品、低价、7天无条件退货。" name="description">
+
+<link media="screen" href="#jsCssUrl('/resource/??/css/index.css,css/design.css,css/frame.css')" rel="stylesheet" type="text/css">
+
+<style>
+a{color:#fff;}
+
+b{
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    filter: alpha(opacity=30);
+    opacity: .3;
+}
+
+.sjmenu ul li{ background:url(static/img/sj/sjmenu.png) no-repeat; width:50px; height:64px; float:left; margin-right:10px; cursor:pointer; text-align:center; line-height:45px; color:#444; font-size:12px; font-weight:bold;}
+.sjmenu ul li.hit{background:url(static/img/sj/sjmenuHover.png) no-repeat; width:50px; height:64px; color:#1f1774;}
+
+</style>
+
+</head>
+<body>
+<input type="hidden" id="topMenuNo" value="6" />
+
+#set( $showModel = "2" ) <div class="top">
+    #parse('comm/top.vm')
+</div>
+<script type="text/javascript" src="#jsCssUrl('/resource/??/css/jquery.masonry.min.js,top.js,bottom.js,swfobject.js,jquery.flash.js')"></script>
+
+	 <div style="background:url(static/img/sj/qj1.jpg) no-repeat 50% 50%; min-width:1200px; height:514px; position:relative;">
+        <div style="width:1190px; margin:0 auto; position:relative;">
+            <div class="sjmenu" style="position:absolute; left:463px; top:461px;">
+                <ul>
+                    <li class="hit">客厅</li>
+                    <li>卧室</li>
+                    <li>卫浴</li>
+                    <li>厨房</li>
+                </ul>
+            </div>
+        
+            <script type="text/javascript">
+    <!--
+    
+            var flashvars = {};
+            var params = {};
+            params.quality = "high";
+            params.bgcolor = "#ffffff";
+            //params.allowscriptaccess = "sameDomain";
+            params.allowfullscreen = "true";
+            params.base=".";
+            var attributes = {};
+            attributes.id = "pano";
+            attributes.name = "pano";
+            attributes.align = "middle";
+            
+            swfobject.embedSWF(
+                "static/img/sj/Bedroom.swf", "flashContent", 
+                "429", "214", 
+                "9.0.0", "expressInstall.swf", 
+                flashvars, params, attributes);
+                
+//-->
+            </script>
+            
+            <div id="flashContent">
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>  
+            </div>
+            <div style="position:absolute; right:68px; top:514px;*top:509px;"><img src="#resourceUrl('/static/img/sj/part1.png')" /></div>
+
+        </div>
+        
+    </div>
+    
+    <a name="qj1"></a>
+    <div class="kt" style="height:688px; background:#f65039; padding-top:20px;;">
+        <div style="width:1190px; margin:0px auto; position:relative;">
+            <div id="c1" style="position:absolute; right:0px; top:20px; z-index:100; color:#fff; font-weight:bold;"><a target="_blank" href="http://www.hxshop.com/productList/query_rt_1|st_search.htm?nameflag=1">更多客厅选择></a></div>
+            <div id="c2" style="position:absolute; left:0px; top:50px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_10626.htm"><img src="#resourceUrl('/static/img/sj/et1.jpg')" /></a><b></b></div>
+            <div id="c3" style="position:absolute; left:480px; top:50px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_12364.htm"><img src="#resourceUrl('/static/img/sj/et2.jpg')" /></a><b></b></div>
+            <div id="c4" style="position:absolute; left:0px; top:290px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_12525.htm"><img src="#resourceUrl('/static/img/sj/et3.jpg')" /></a><b></b></div>
+            <div id="c5" style="position:absolute; left:0px; top:530px;"><a target="_blank" href="http://www.hxshop.com/productList/query_rt_1|st_search.htm?nameflag=1"><img src="#resourceUrl('/static/img/sj/et4.jpg')" /></a><b></b></div>
+            <div id="c6" style="position:absolute; left:240px; top:290px;">
+                 <div id="kt1" style="position:absolute;width:36px; height:31px; left:53px; top:252px; cursor:pointer;  "></div>
+                 <div id="kt2" style="position:absolute;width:36px; height:31px; left:241px; top:189px; cursor:pointer;  "></div>
+                 <div id="kt3" style="position:absolute;width:36px; height:31px; left:370px; top:-7px; cursor:pointer; "></div>
+                 <div id="kt4" style="position:absolute;width:36px; height:31px; left:370px; top:272px; cursor:pointer;  "></div>
+                <img src="#resourceUrl('/static/img/sj/et5.jpg')" />
+            </div>
+            <div id="c7" style="position:absolute; left:720px; top:50px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_11421.htm"><img src="#resourceUrl('/static/img/sj/et6.jpg')" /></a><b></b></div>
+            <div id="c8" style="position:absolute; left:960px; top:50px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_11215.htm"><img src="#resourceUrl('/static/img/sj/et7.jpg')" /></a><b></b></div>
+            <div id="c9" style="position:absolute; left:960px; top:175px;"><img src="#resourceUrl('/static/img/sj/et8.jpg')" /><b></b></div>
+        </div>
+    </div>
+    
+    <a name="qj2"></a>
+    <div class="ws" style="height:688px; background:#81c74d;">
+        <div style="width:1190px; margin:0px auto; position:relative;">
+            <div id="a1" style="position:absolute; right:0px; top:20px; z-index:100; color:#fff; font-weight:bold;"><a target="_blank" href="http://www.hxshop.com/productList/query_rt_5|st_search.htm?nameflag=1">更多儿童选择></a></div>
+            <div id="a2" style="position:absolute; left:0px; top:30px;"><img src="#resourceUrl('/static/img/sj/ws1.jpg')" /><b></b></div>
+            <div id="a3" style="position:absolute; left:0px; top:530px;"><a target="_blank" href="http://www.hxshop.com/productList/query_rt_5|st_search.htm?nameflag=1"><img src="#resourceUrl('/static/img/sj/ws2.jpg')" /></a><b></b></div>
+            <div id="a4" style="position:absolute; left:240px; top:50px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_5618.htm"><img src="#resourceUrl('/static/img/sj/ws3.jpg')" /></a><b></b></div>
+            <div id="a5" style="position:absolute; left:240px; top:290px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_5080.htm"><img src="#resourceUrl('/static/img/sj/ws4.jpg')" /></a><b></b></div>
+            <div id="a6" style="position:absolute; left:480px; top:50px;">
+                <div id="ws1" style="position:absolute;width:36px; height:31px; left:200px; top:139px; cursor:pointer;"></div>
+                <div id="ws2" style="position:absolute;width:36px; height:31px; left:345px; top:113px; cursor:pointer;"></div>
+                <div id="ws3" style="position:absolute;width:36px; height:31px; left:345px; top:242px; cursor:pointer;"></div>
+                <div id="ws4" style="position:absolute;width:36px; height:31px; left:625px; top:219px; cursor:pointer;"></div>
+                <img src="#resourceUrl('/static/img/sj/ws5.jpg')" />
+            </div>
+            <div id="a7" style="position:absolute; left:480px; top:415px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_5551.htm"><img src="#resourceUrl('/static/img/sj/ws6.jpg')" /></a><b></b></div>
+            <div id="a8" style="position:absolute; left:960px; top:415px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_7956.htm"><img src="#resourceUrl('/static/img/sj/ws7.jpg')" /></a><b></b></div>
+        </div>
+    </div>
+    <a name="qj3"></a>
+    <div class="wy" style="height:688px; background:#4ea9e2; padding-top:20px;">
+        <div style="width:1190px; margin:0px auto ; position:relative;">
+            <div id="b1" style="position:absolute; right:0px; top:20px; z-index:100; color:#fff; font-weight:bold;"><a target="_blank" href="http://www.hxshop.com/productList/query_rt_3|st_search.htm?nameflag=1">更多卫浴选择></a></div>
+            <div id="b2" style="position:absolute; left:0px; top:50px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_5427.htm"><img src="#resourceUrl('/static/img/sj/wy1.jpg')" /></a><b></b></div>
+            <div id="b3" style="position:absolute; left:0px; top:530px;"><a target="_blank" href="http://www.hxshop.com/productList/query_rt_3|st_search.htm?nameflag=1><img src="#resourceUrl('/static/img/sj/wy2.jpg')" /></a><b></b></div>
+            <div id="b4" style="position:absolute; left:240px; top:50px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_6792.htm"><img src="#resourceUrl('/static/img/sj/wy3.jpg')" /></a><b></b></div>
+            <div id="b5" style="position:absolute; left:480px; top:50px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_10921.htm"><img src="#resourceUrl('/static/img/sj/wy4.jpg')" /></a><b></b></div>
+            <div id="b6" style="position:absolute; left:240px; top:290px;">
+                <div id="wy1" style="position:absolute;width:36px; height:31px; left:126px; top:263px; cursor:pointer; "></div>
+                <div id="wy2" style="position:absolute;width:36px; height:31px; left:165px; top:200px; cursor:pointer; "></div>
+                <div id="wy3" style="position:absolute;width:36px; height:31px; left:240px; top:195px; cursor:pointer; "></div>
+                <div id="wy4" style="position:absolute;width:36px; height:31px; left:431px; top:43px; cursor:pointer; "></div>
+                <div id="wy5" style="position:absolute;width:36px; height:31px; left:470px; top:278px; cursor:pointer;"></div>
+                <img src="#resourceUrl('/static/img/sj/wy5.jpg')" />
+            </div>
+            <div id="b7" style="position:absolute; left:720px; top:28px;"><img src="#resourceUrl('/static/img/sj/wy6.jpg')"/><b style="width:470px; height:230px; top:22px;"></b></div>
+            <div id="b8" style="position:absolute; left:960px; top:290px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_7442.htm"><img src="#resourceUrl('/static/img/sj/wy7.jpg')" /></a><b></b></div>
+            <div id="b9" style="position:absolute; left:960px; top:415px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_130.htm"><img src="#resourceUrl('/static/img/sj/wy8.jpg')" /></a><b></b></div>
+        </div>
+    </div>
+    
+    
+   
+    <a name="qj4"></a>
+    <div class="cf" style="height:688px; background:#ffa21c; padding-top:20px;">
+        <div style="width:1190px; margin:0px auto; position:relative;">
+            <div id="d1" style="position:absolute; right:0px; top:20px; z-index:100; color:#fff; font-weight:bold;"><a target="_blank" href="http://www.hxshop.com/productList/query_rt_4|st_search.htm?nameflag=1">更多厨房选择></a></div>
+            <div id="d2" style="position:absolute; left:0px; top:50px;">
+                <div id="cf1" style="position:absolute;width:36px; height:31px; left:29px; top:211px; cursor:pointer;   "></div>
+                <div id="cf2" style="position:absolute;width:36px; height:31px; left:117px; top:194px; cursor:pointer;  "></div>
+                <div id="cf3" style="position:absolute;width:36px; height:31px; left:520px; top:122px; cursor:pointer;   "></div>
+                <img src="#resourceUrl('/static/img/sj/cf1.jpg')" />
+            </div>
+            <div id="d3" style="position:absolute; left:0px; top:415px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_14036.htm"><img src="#resourceUrl('/static/img/sj/cf2.jpg')" /></a><b></b></div>
+            <div id="d4" style="position:absolute; left:240px; top:415px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_12253.htm"><img src="#resourceUrl('/static/img/sj/cf3.jpg')" /></a><b></b></div>
+            <div id="d5" style="position:absolute; left:720px; top:50px;"><a target="_blank" href="http://www.hxshop.com/productList/query_rt_4|st_search.htm?nameflag=1"><img src="#resourceUrl('/static/img/sj/cf4.jpg')" /></a><b></b></div>
+            <div id="d6" style="position:absolute; left:720px; top:175px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_14013.htm"><img src="#resourceUrl('/static/img/sj/cf5.jpg')" /></a><b></b></div>
+            <div id="d7" style="position:absolute; left:720px; top:415px;"><a target="_blank" href="http://www.hxshop.com/productGoods/productGoodsInit_4160.htm"><img src="#resourceUrl('/static/img/sj/cf6.jpg')" /></a><b ></b></div>
+             <div id="d8" style="position:absolute; left:960px; top:175px;"><img src="#resourceUrl('/static/img/sj/cf7.jpg')" /><b style="width:230px;"></b></div>
+        </div>
+    </div>
+<script>
+$(function(){
+    $('.sjmenu ul li').hover(function(){
+        $(this).siblings().removeClass('hit');
+        $(this).addClass('hit');    
+    },function(){
+        $(this).removeClass('hit'); 
+    }).click(function(){
+        location.href = '#qj'+ ($(this).index()+1); 
+    })
+    
+    
+    
+    $('#ws1').hover(function(){
+        $('.ws b').show();
+        $('#a8 b').hide();
+    },function(){
+        $('.ws b').hide();  
+    })  
+    
+    $('#ws2').hover(function(){
+        $('.ws b').show();
+        $('#a7 b').hide();
+    },function(){
+        $('.ws b').hide();  
+    })  
+    
+    $('#ws3').hover(function(){
+        $('.ws b').show();
+        $('#a5 b').hide();
+    },function(){
+        $('.ws b').hide();  
+    })
+    
+    $('#ws4').hover(function(){
+        $('.ws b').show();
+        $('#a4 b').hide();
+    },function(){
+        $('.ws b').hide();  
+    })
+    
+    $('#wy1').hover(function(){
+        $('.wy b').show();
+        $('#b4 b').hide();
+    },function(){
+        $('.wy b').hide();  
+    })  
+    
+    $('#wy2').hover(function(){
+        $('.wy b').show();
+        $('#b8 b').hide();
+    },function(){
+        $('.wy b').hide();  
+    })  
+    
+    $('#wy3').hover(function(){
+        $('.wy b').show();
+        $('#b5 b').hide();
+    },function(){
+        $('.wy b').hide();  
+    })  
+    
+    $('#wy4').hover(function(){
+        $('.wy b').show();
+        $('#b2 b').hide();
+    },function(){
+        $('.wy b').hide();  
+    })  
+    
+    $('#wy5').hover(function(){
+        $('.wy b').show();
+        $('#b9 b').hide();
+    },function(){
+        $('.wy b').hide();  
+    })  
+    
+    
+    $('#kt1').hover(function(){
+        $('.kt b').show();
+        $('#c2 b').hide();
+    },function(){
+        $('.kt b').hide();  
+    })  
+    
+    $('#kt2').hover(function(){
+        $('.kt b').show();
+        $('#c8 b').hide();
+    },function(){
+        $('.kt b').hide();  
+    })  
+    
+    $('#kt3').hover(function(){
+        $('.kt b').show();
+        $('#c7 b').hide();
+    },function(){
+        $('.kt b').hide();  
+    })  
+    
+    $('#kt4').hover(function(){
+        $('.kt b').show();
+        $('#c3 b,#c4 b').hide();
+    },function(){
+        $('.kt b').hide();  
+    })  
+    
+    $('#cf1').hover(function(){
+        $('.cf b').show();
+        $('#d7 b').hide();
+    },function(){
+        $('.cf b').hide();  
+    })  
+    
+    $('#cf2').hover(function(){
+        $('.cf b').show();
+        $('#d3 b,#d6 b').hide();
+    },function(){
+        $('.cf b').hide();  
+    })  
+    
+    $('#cf3').hover(function(){
+        $('.cf b').show();
+        $('#d4 b').hide();
+    },function(){
+        $('.cf b').hide();  
+    })   
+                     
+    var flashUrl = "#resourceUrl('/static/img/sj/light.swf')";
+    $('#kt1').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#kt2').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#kt3').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#kt4').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    
+    $('#ws1').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#ws2').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#ws3').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#ws4').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    
+    $('#wy1').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#wy2').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#wy3').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#wy4').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#wy5').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    
+    $('#cf1').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#cf2').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#cf3').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    $('#cf4').flash({src:flashUrl,width:60,height:60,wmode:'transparent',allowScriptAccess:'always',allowFullScreen:'false'});
+    
+    
+    
+})
+</script>
+<div class="bottom">#parse('comm/bottom.vm')</div><!--尾部 内容在bottom.js-->
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>红星家品会：品牌家居特卖网_确保正品_确保低价</title>
+<meta content="红星家品会,hxshop,打折,品牌折扣,限时抢购,特卖" name="keywords">
+<meta content="红星家品会，品牌家居特卖网。红星家品会商品囊括家居、家具、建材等上千品牌。100%正品、低价、7天无条件退货。" name="description">
+#parse('comm/head.vm')
+<link media="all" href="#jsCssUrl('/resource/??/css/frame.css,css/index.css')" rel="stylesheet" type="text/css">
+</head>
+<body>
+<input type="hidden" id="topMenuNo" value="1" />
+<!-- 活动公告-->
+<!-- $!INDEXNOTICE-->
+<!-- 活动公告-->
+<!--qq采贝-->
+$!caibei
+<!--qq采贝 end -->
+#set( $showModel = "2" ) <div class="top">
+    #parse('comm/top.vm')
+</div>
+
+$!CMSCONTENT
+
+<div class="bottom">
+    #parse('comm/bottom.vm')
+</div>
+<script type="text/javascript" src="#jsCssUrl('/resource/??/js/indexslide.js,/js/cuttime.js,/js/checkform.js?v=20140604')"></script>   
+
+<script type="text/javascript">
+//定义彩贝方法
+ function caibeiHide(){$('.qqcb').slideUp();}
+$(document).ready(function(){
+    setTimeout(caibeiHide,10000);    
+    /****焦点图**/
+    $("#slides1").slide();
+     //手风琴
+    $('.qjzsBox>div').hover(function(){
+      if(!$(this).is(':animated')){
+            $(this).siblings().animate({'width': '132px'},300);
+            $(this).animate({'width': '318px'},300);
+        }
+    },function(){        
+    });      
+    //情景展示后六个模块变色
+    $('.list,.sjss6F').hover(
+        function(){
+            $(this).addClass("hover");
+        },
+        function(){
+            $(this).removeClass("hover");
+        }
+    );
+      //控制页面图片延迟加载(src 写成original):
+    $(".ind_mod img").lazyload({
+        placeholder : "http://www.hxshop.com/static/img/pub/dev/web/g.gif",
+        effect : "fadeIn",
+        threshold : 100
+    });
+            
+    //加载indexHotSale的内容
+    jQuery.ajax({
+            url : "#springUrl('/getHotSale.htm')",
+            type : "post",
+            dataType : "json",
+            success : function(data) {
+               $("#indexv3HotSale").append(data.data);
+            },
+            error : function(data) {
+            }
+        });  
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Pick Test Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1" />
+        <link href="#springUrl('/resource/css/style.css')" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="#springUrl('/resource/css/flex.css')" media="all" />
+        <script src="#springUrl('/resource/js/jquery.js')"></script>
+        ##项目添加js
+        ##<script src="#springUrl('/resource/js/top.js')"></script>
+        ##<script src="#springUrl('/resource/js/left.js')"></script>
+        <script src="#springUrl('/resource/js/common.js')"></script>
+        <script type="text/javascript" src="#springUrl('/resource/js/flexigrid.js')"></script>
+        <script type="text/javascript" src="#springUrl('/resource/js/datapick.js')"></script>
+        
+        ##公用功能js
+        <script language="javascript" type="text/javascript" src="#springUrl('/resource/My97DatePicker/WdatePicker.js')"></script>
+        <script src="#springUrl('/resource/js/checkform.js')"></script>
+        <script type="text/javascript" src="#springUrl('/resource/js/common-util.js')"></script>
+    </head>
+    <body>
+        <div id="pick_backdrop" class="modal-backdrop" style="display:none;"></div>
+        #parse("/common/productgoodspick.vm")
+        #parse("/common/producttagpick.vm")
+        #parse("/common/objectmediapick.vm")
+        #parse("/common/brandpick.vm")
+        #parse("/common/channelpick.vm")
+        #parse("/common/extcategorypick.vm")
+        <div >
+            <label >商品代码</label>
+            <input type="text" value="" id="product_goods_code"/>
+            <input type="button" id="add_goods_button_for_code" value="选择"/>
+            
+            </br>
+            
+            <label >商品名称</label>
+            <input type="text" value="" id="product_goods_name"/>
+            <input type="button" id="add_goods_button_for_name" value="选择"/>
+            
+            </br>
+            
+            <label >商品标签</label>
+            <input type="text" value="" id="product_tag"/>
+            <input type="button" id="product_tag_button" value="选择"/>
+            
+            </br>
+            
+            <label >资源描述</label>
+            <input type="text" value="" id="object_media_discription"/>
+            <input type="button" id="object_media_button" value="选择"/>
+            
+            </br>
+            
+            <label >品牌名称</label>
+            <input type="text" value="" id="brand_name"/>
+            <input type="button" id="brand_button" value="选择"/>
+            
+             </br>
+            
+            <label >子频道名称</label>
+            <input type="text" value="" id="channel_name"/>
+            <input type="button" id="channel_button" value="选择"/>
+            
+            </br>
+            
+            <label >虚拟分类名称</label>
+            <input type="text" value="" id="ext_category_name"/>
+            <input type="button" id="ext_category_button" value="选择"/>
+
+        </div>
+        
+    </body>
+        <script type="text/javascript">
+                
+        jQuery(document).ready(function($) {
+            
+            $("#add_goods_button_for_code").click(function(){
+                
+                //设置初始查询条件
+                DataPick.queryParams = new Array();
+                DataPick.queryParams.push({key : "priceAdjustQuery_pdtCode", value : $("#product_goods_code").val()});
+                
+                //打开Pick Panel
+                productGoodsPick.openPick();
+                
+                //设置回调函数(处理选择的数据)
+                DataPick.callback = doSomeThing;
+                
+                //回调函数(处理选择的数据)
+                function doSomeThing(data){
+                    if(data != ""){
+                        $("#product_goods_code").val(data[0].pdtCode);
+                    }
+                }
+            });
+            
+            $("#add_goods_button_for_name").click(function(){
+            
+                //设置初始查询条件
+                DataPick.queryParams = new Array();
+                DataPick.queryParams.push({key : "priceAdjustQuery_pdtName", value : $("#product_goods_name").val()});
+                
+                //打开Pick Panel
+                productGoodsPick.openPick();
+                //设置回调函数(处理选择的数据)
+                DataPick.callback = doSomeThing;
+                
+                //回调函数(处理选择的数据)
+                function doSomeThing(data){
+                    if(data != ""){
+                        $("#product_goods_name").val(data[0].pdtName);
+                    }
+                }
+            });
+            
+            $("#product_tag_button").click(function(){
+            
+                //设置回调函数(处理选择的数据)
+                DataPick.callback = doSomeThing;
+                
+                productTagPick.openPick();
+                
+                //回调函数
+                function doSomeThing(data){
+                    if(data != ""){
+                        $("#product_tag").val(data[0].tagName);
+                    }
+                }
+            });
+            
+            $("#object_media_button").click(function(){
+            
+                //设置回调函数(处理选择的数据)
+                DataPick.callback = doSomeThing;
+                
+                objectMediaPick.openPick();
+                
+                //回调函数
+                function doSomeThing(data){
+                    if(data != ""){
+                        $("#object_media_discription").val(data[0].label);
+                    }
+                }
+            });
+            
+           $("#brand_button").click(function(){
+            
+                //设置回调函数(处理选择的数据)
+                DataPick.callback = doSomeThing;
+                
+                brandPick.openPick();
+                
+                //回调函数
+                function doSomeThing(data){
+                    if(data != ""){
+                        $("#brand_name").val(data[0].brandName);
+                    }
+                }
+            });
+            
+            $("#channel_button").click(function(){
+            
+                
+                //设置回调函数(处理选择的数据)
+                DataPick.callback = doSomeThing;
+                
+                channelPick.search();
+                channelPick.openPick();
+                
+                //回调函数
+                function doSomeThing(data){
+                
+                alert("hello:"+data);
+                    
+                }
+            });
+            
+            $("#ext_category_button").click(function(){
+            
+                DataPick.callback = doSomeThing;
+                
+                extcategoryPick.search();
+                extcategoryPick.openPick();
+                
+                //回调函数
+                function doSomeThing(data){
+                
+                alert("hello:"+data);
+                    
+                }
+            });
+            
+        });    
+        </script>
+</html>

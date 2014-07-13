@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.tsr</groupId>
+    <artifactId>tsr-common-web</artifactId>
+    <version>0.0.1</version>
+  </parent>
+  <artifactId>tsr-web</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.tsr</groupId>
+  		<artifactId>tsr-common</artifactId>
+  		<version>0.0.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.tsr</groupId>
+  		<artifactId>tsr-api</artifactId>
+  		<version>0.0.1</version>
+  	</dependency>
+  </dependencies>
+  <name>tsr-common-web</name>
+</project>
