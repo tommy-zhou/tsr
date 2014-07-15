@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tsr.core.persistence.BrandMapper" >
+  <resultMap id="BaseResultMap" type="com.tsr.api.bean.Brand" >
+    <id column="brand_id" property="brandId" jdbcType="INTEGER" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <result column="brand_state" property="brandState" jdbcType="TINYINT" />
+    <result column="brand_index" property="brandIndex" jdbcType="VARCHAR" />
+    <result column="month_sales_count" property="monthSalesCount" jdbcType="INTEGER" />
+    <result column="create_operator" property="createOperator" jdbcType="VARCHAR" />
+    <result column="update_operator" property="updateOperator" jdbcType="VARCHAR" />
+    <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />
+    <result column="update_datetime" property="updateDatetime" jdbcType="TIMESTAMP" />
+    <result column="brand_story" property="brandStory" jdbcType="VARCHAR" />
+    <result column="brand_logo_url" property="brandLogoUrl" jdbcType="VARCHAR" />
+    <result column="brand_sort" property="brandSort" jdbcType="INTEGER" />
+    <result column="brand_title_url" property="brandTitleUrl" jdbcType="VARCHAR" />
+    <result column="brand_img_url" property="brandImgUrl" jdbcType="VARCHAR" />
+    <result column="brand_intro" property="brandIntro" jdbcType="VARCHAR" />
+    <result column="syn_status" property="synStatus" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    brand_id, brand_name, brand_state, brand_index, month_sales_count, create_operator, 
+    update_operator, create_datetime, update_datetime, brand_story, brand_logo_url, brand_sort, 
+    brand_title_url, brand_img_url, brand_intro, syn_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from brand
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from brand
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tsr.api.bean.Brand" >
+    insert into brand (brand_id, brand_name, brand_state, 
+      brand_index, month_sales_count, create_operator, 
+      update_operator, create_datetime, update_datetime, 
+      brand_story, brand_logo_url, brand_sort, 
+      brand_title_url, brand_img_url, brand_intro, 
+      syn_status)
+    values (#{brandId,jdbcType=INTEGER}, #{brandName,jdbcType=VARCHAR}, #{brandState,jdbcType=TINYINT}, 
+      #{brandIndex,jdbcType=VARCHAR}, #{monthSalesCount,jdbcType=INTEGER}, #{createOperator,jdbcType=VARCHAR}, 
+      #{updateOperator,jdbcType=VARCHAR}, #{createDatetime,jdbcType=TIMESTAMP}, #{updateDatetime,jdbcType=TIMESTAMP}, 
+      #{brandStory,jdbcType=VARCHAR}, #{brandLogoUrl,jdbcType=VARCHAR}, #{brandSort,jdbcType=INTEGER}, 
+      #{brandTitleUrl,jdbcType=VARCHAR}, #{brandImgUrl,jdbcType=VARCHAR}, #{brandIntro,jdbcType=VARCHAR}, 
+      #{synStatus,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tsr.api.bean.Brand" >
+    insert into brand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="brandState != null" >
+        brand_state,
+      </if>
+      <if test="brandIndex != null" >
+        brand_index,
+      </if>
+      <if test="monthSalesCount != null" >
+        month_sales_count,
+      </if>
+      <if test="createOperator != null" >
+        create_operator,
+      </if>
+      <if test="updateOperator != null" >
+        update_operator,
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime,
+      </if>
+      <if test="updateDatetime != null" >
+        update_datetime,
+      </if>
+      <if test="brandStory != null" >
+        brand_story,
+      </if>
+      <if test="brandLogoUrl != null" >
+        brand_logo_url,
+      </if>
+      <if test="brandSort != null" >
+        brand_sort,
+      </if>
+      <if test="brandTitleUrl != null" >
+        brand_title_url,
+      </if>
+      <if test="brandImgUrl != null" >
+        brand_img_url,
+      </if>
+      <if test="brandIntro != null" >
+        brand_intro,
+      </if>
+      <if test="synStatus != null" >
+        syn_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandState != null" >
+        #{brandState,jdbcType=TINYINT},
+      </if>
+      <if test="brandIndex != null" >
+        #{brandIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="monthSalesCount != null" >
+        #{monthSalesCount,jdbcType=INTEGER},
+      </if>
+      <if test="createOperator != null" >
+        #{createOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateOperator != null" >
+        #{updateOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="createDatetime != null" >
+        #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDatetime != null" >
+        #{updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brandStory != null" >
+        #{brandStory,jdbcType=VARCHAR},
+      </if>
+      <if test="brandLogoUrl != null" >
+        #{brandLogoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="brandSort != null" >
+        #{brandSort,jdbcType=INTEGER},
+      </if>
+      <if test="brandTitleUrl != null" >
+        #{brandTitleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="brandImgUrl != null" >
+        #{brandImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="brandIntro != null" >
+        #{brandIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="synStatus != null" >
+        #{synStatus,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tsr.api.bean.Brand" >
+    update brand
+    <set >
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandState != null" >
+        brand_state = #{brandState,jdbcType=TINYINT},
+      </if>
+      <if test="brandIndex != null" >
+        brand_index = #{brandIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="monthSalesCount != null" >
+        month_sales_count = #{monthSalesCount,jdbcType=INTEGER},
+      </if>
+      <if test="createOperator != null" >
+        create_operator = #{createOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateOperator != null" >
+        update_operator = #{updateOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDatetime != null" >
+        update_datetime = #{updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brandStory != null" >
+        brand_story = #{brandStory,jdbcType=VARCHAR},
+      </if>
+      <if test="brandLogoUrl != null" >
+        brand_logo_url = #{brandLogoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="brandSort != null" >
+        brand_sort = #{brandSort,jdbcType=INTEGER},
+      </if>
+      <if test="brandTitleUrl != null" >
+        brand_title_url = #{brandTitleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="brandImgUrl != null" >
+        brand_img_url = #{brandImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="brandIntro != null" >
+        brand_intro = #{brandIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="synStatus != null" >
+        syn_status = #{synStatus,jdbcType=TINYINT},
+      </if>
+    </set>
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tsr.api.bean.Brand" >
+    update brand
+    set brand_name = #{brandName,jdbcType=VARCHAR},
+      brand_state = #{brandState,jdbcType=TINYINT},
+      brand_index = #{brandIndex,jdbcType=VARCHAR},
+      month_sales_count = #{monthSalesCount,jdbcType=INTEGER},
+      create_operator = #{createOperator,jdbcType=VARCHAR},
+      update_operator = #{updateOperator,jdbcType=VARCHAR},
+      create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      update_datetime = #{updateDatetime,jdbcType=TIMESTAMP},
+      brand_story = #{brandStory,jdbcType=VARCHAR},
+      brand_logo_url = #{brandLogoUrl,jdbcType=VARCHAR},
+      brand_sort = #{brandSort,jdbcType=INTEGER},
+      brand_title_url = #{brandTitleUrl,jdbcType=VARCHAR},
+      brand_img_url = #{brandImgUrl,jdbcType=VARCHAR},
+      brand_intro = #{brandIntro,jdbcType=VARCHAR},
+      syn_status = #{synStatus,jdbcType=TINYINT}
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </update>
+</mapper>

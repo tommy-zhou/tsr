@@ -15,7 +15,7 @@ public class MyBatisCodeGenerator {
 		  List<String> warnings = new ArrayList<String>();
 		   boolean overwrite = true;
 		  // String url = MyBatisCodeGenerator.class.getResource("").getPath()+"../MBG_configuration.xml";
-		   String url = "D:\\eclipse\\workspace\\rsos\\rsos-core\\src\\test\\resources\\MBG_configuration.xml";
+		   String url = "E:\\项目文档\\tsr\\source_code\\tsr\\tsr-core\\src\\test\\resources\\MBG_configuration.xml";
 		   File configFile = new File(url);
 		   ConfigurationParser cp = new ConfigurationParser(warnings);
 		   Configuration config = cp.parseConfiguration(configFile);
