@@ -1,0 +1,348 @@
+/*我的订单*/
+ul.ulli li{list-style-type: decimal;}
+.righttitle{font-size:14px;}
+.rede16317 { color:#e16317;}
+.pernalTabTitle .ul li [sp='1']{width:150px;}
+.search0 {width:270px;height:30px;margin-top:5px;border:solid 1px #D6D6D6;text-align:center;}
+.search1 {position:relative;top:-31px;left:280px;width:70px;cursor:pointer;}
+.payaction {background-color:#E22B41;height:30px;text-align:center;line-height:30px;color:#ffffff; cursor:pointer;}
+.f14c33{
+	font-size:14px;
+	color:#333333;
+}
+.table {margin-top:10px;}
+.table th[col='1']{width:362px;}
+.table th[col='2']{width:100px;}
+.table th[col='3']{width:75px;}
+.table th[col='4']{width:100px;}
+.table th[col='5']{width:100px;}
+.table th[col='6']{width:110px;}
+.table th[col='7']{width:114px;}
+/*.table tr{height:100px} //tr的高度靠td和padding来撑 不要再tr上设置
+*+html .table tr{ height:80px;}*/
+.table .tabletitle{height:30px; border:1px solid #d6d6d6;}
+.table td.last {padding:25px;}
+.table th {
+    background: none repeat scroll 0 0 #EFEFEF;
+    color: #666666;
+    padding: 8px;
+    text-align: center;
+	border-collapse: collapse;
+	margin: 0;
+}
+.table .first {
+	width:350px;
+	border-right:1px solid #ffffff;
+	padding-left:15px;
+}
+.table .second {
+	border-right:1px solid #ffffff;
+}
+.table td {
+    border: 1px solid #D6D6D6;
+    color: #666666;
+    padding: 10px; 
+    text-align: center;
+}
+.table .noorder {
+	font-size:14px;
+	border:0;
+	height:100px;
+}
+.table a{
+	color:#E22B41;
+}
+a.linkToIndex :link{
+	color:#423e76;
+}
+a.rebackA:link{
+	color:#E22B41;
+}
+.table tr.trtitle{height:30px;}
+.table .code {
+	text-align: left;
+	padding-left:15px;
+	background-color:#f0f0f0;
+}
+.table .img {
+	width:70px;
+	height:70px;
+	border:1px solid #D6D6D6;
+}
+.table .trspace { height:15px;}
+.table .space {
+	rolspan:7;
+	border:0;
+	padding:0;
+}
+.table .pay{
+	color:#e16317;
+	font-size:14px;
+}
+.table .paya{
+	color:#333333;
+}
+.table .detail{
+	color:#E22B41;
+}
+.table .orderstate {
+	font-size:14px;
+}
+.table .orderstate2 {
+	font-size:14px;
+	color:#E22B41;
+}
+.table .orderstate3 {
+	color:#e16317;
+}
+ 
+/*等待付款*/
+.waitpay1{
+	color:#333333;
+	height:50px;
+	background-color:#f0f0f0;
+	padding:25px;
+	line-height: 30px;
+}
+.font14 {
+	font-size:14px;
+	font-weight: bold;
+}
+.waitpay1 .redState {
+	color:#e16317;
+}
+.waitpay1 a:link{
+	color:#E22B41;
+}
+.waitpay1 .clock{
+	position:relative;
+	top:-30px;
+	left:710px;
+	width:110px;
+	font-size:16px;
+}
+.waitpay1 .payIm {
+    background-color: #E22B41;
+    left: 450px;
+    position: relative;
+    text-align: center;
+    top: -30px;
+    width: 95px;
+	color:#ffffff;
+	cursor:pointer;
+}
+.waitpay1 .cancelOrder {
+	background-color: #b3b3b3;
+	left:550px;
+	position:relative;
+	text-align:center;
+	top: -60px;
+	width: 95px;
+	color:#ffffff;
+	cursor:pointer;
+}
+.waitpay1 .backorder{
+    background-color: #E22B41;
+    left: 840px;
+    position: relative;
+    text-align: center;
+    top: -70px;
+    width: 95px;
+	color:#ffffff;
+	cursor:pointer;
+}
+.waitpay1 .mes{
+	position:relative;
+	top:-60px;
+}
+.waitpay1 .frontState{
+	margin-left:145px;
+}
+.waitpayShow{
+	border:1px solid #e7e7e7;
+	padding:0 75px;
+	margin-top:15px;
+	margin-bottom:15px;
+	height:130px;
+	color:#8d8d8e;
+}
+.waitpayShow>div {
+	float:left;
+	width:67px;
+	position:relative;
+}
+.waitpayShow .orderTime,.requestTime{
+	left: 35px;
+}
+.waitpayShow .payTime,.warehouseTime{
+	left: 205px;
+}
+.waitpayShow .outerTime,.checkTime{
+	left: 375px;
+}
+.waitpayShow .getTime,.refundTime{
+	left: 545px;
+}
+.exchangeShow{
+	border:1px solid #e7e7e7;
+	padding:0 35px;
+	margin-top:15px;
+	margin-bottom:15px;
+	height:130px;
+	color:#8d8d8e;
+}
+.exchangeShow>div {
+	float:left;
+	width:67px;
+	position:relative;
+}
+.exchangeShow .waitTime {
+	left: 30px;
+}
+.exchangeShow .fillsuccessTime{
+	left:130px;
+}
+.exchangeShow .warehouse2Time{
+	left:210px;
+}
+.exchangeShow .check2Time{
+	left:295px;
+}
+.exchangeShow .outwarehouseTime{
+	left:375px;
+}
+.exchangeShow .makesureTime{
+	left:475px;
+}
+.personalgrid1 td {
+    color: #666666;
+    padding: 10px;  
+}
+.personalgrid1 .colright{
+	text-align:right;
+}
+.personalgrid1 .title{
+	color:#333333;
+	font-size:14px;
+	font-weight: bold;
+	padding:10px 0 0 20px;
+}
+.personalgrid1 .firstcol{
+	width:375px;
+}
+.pernalTabTitle ul li[sp='2']{
+	color:#333333;
+	font-size:14px;
+}
+.table tr[sp='1'] .second{
+	font-size:14px;
+	color:#333333;
+}
+.table tr[sp='1'] a:link, .personalgrid1 .table .last{
+	color:#E22B41;
+}
+.table tr[sp='1'] .all{
+	color:#e16317;
+}
+.table .originPrice {
+	font-size:12px;
+	color:#666666;
+	text-decoration:line-through;
+}
+.personalgrid1 .total {
+	background-color:#f0f0f0;
+	padding:25px 0px 20px 15px;
+	line-height:30px;
+}
+.personalgrid1 .totalDetail {
+	font-size:14px;
+	color:#333333;
+}
+.personalgrid1 .totalColor {
+	font-size:18px;
+	color:#e16317;
+}
+.personalgrid1 .totalDetail span{
+	position:relative;
+}
+.waitpay1 .sure{
+    background-color: #E22B41;
+    left: 450px;
+    position: relative;
+    text-align: center;
+    top: -30px;
+    width: 95px;
+	color:#ffffff;
+	cursor:pointer;
+}
+.waitpay1 .rebuy{
+	position:relative;
+	left:580px;
+	top:-25px;
+}
+.waitpay1 .rebuyButton{
+    background-color: #E22B41;
+	position:relative;
+	top:-55px;
+	left:780px;
+    text-align: center;
+	height:30px;
+    width: 165px;
+	color:#ffffff;
+	cursor:pointer;
+}
+.waitpay1 .expressCp{
+	width:410px;
+	height:155px;
+	background-color:#ffffff;
+	margin-top:10px;
+	color:#333333;
+	padding:10px;
+}
+.expressCp td,.expressCp2 td{
+	padding-bottom:10px;
+	color:#333333;
+}
+.waitpay1 .sure2{
+    background-color: #E22B41;
+    text-align: center;
+    width: 95px;
+	color:#ffffff;
+	cursor:pointer;
+}
+.waitpay1 .expressCp2{
+	width:390px;
+	height:110px;
+	background-color:#ffffff;
+	margin-top:5px;
+	color:#333333;
+	padding:10px;
+}
+.pernalTabContent .tb0{
+	color:#666666;
+	border:1px solid #e7e7e7;
+}
+.tb0 td{ padding:5px;}
+.tb0 .tbTitle{ color:#333333; font-size:14px;}
+.tb0 .tb1left{text-align:right;}
+.tb0 .grey { color:#999999;}
+
+.confirmDialog {width:378px; height:256px;position:absolute;top:420px;left:35%; border:1px solid #E22B41; color:#333333; background-image: url(static/img/confirmBg.jpg)}
+.show2{ background:red;}
+.confirmDialog .close{width:10px;height:10px; position:absolute; top:10px; right:10px;cursor:pointer;}
+.confirmDialog .dtitle{position:absolute; top:10px; left:10px; font-size:14px; color:#FFF;}
+.confirmDialog .dcontent{position:absolute;top:60px;left:60px;width:300px;height:160px;}
+.confirmDialog .complete{ line-height:30px; margin-top:50px; width:100px; height:30px; text-align:center; background-color:#f0f0f0;cursor:pointer;}
+.confirmDialog .continue{ color:#ffffff;line-height:30px;width:100px; height:30px;position:relative; top:-30px; left:130px; text-align:center; background-color:#E22B41;cursor:pointer;}
+.confirmDialog .goback{cursor:pointer; margin-top:35px; text-align:center; color:#333333; background-color:#E22B41; width:100px; height:30px;color:#ffffff;line-height:30px;}
+.confirmDialog .alreadyGet{color:#ffffff;line-height:30px;width:100px; height:30px; margin-top:15px; text-align:center; background-color:#E22B41;cursor:pointer;}
+.confirmDialog .notYet{ line-height:30px;position:relative; top:-30px; left:130px; width:100px; height:30px; text-align:center; background-color:#f0f0f0;cursor:pointer;}
+img.picclose{position:absolute; right:0; top:-15px;}
+*+html img.picclose{ top:0px;}
+
+
+
+
+
+
+

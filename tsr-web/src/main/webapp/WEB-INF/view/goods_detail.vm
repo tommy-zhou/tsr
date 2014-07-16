@@ -1,0 +1,780 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>商品详细</title>
+<meta content="红星家品会,hxshop,打折,品牌折扣,限时抢购,特卖" name="keywords">
+<meta content="红星家品会，品牌家居特卖网。红星家品会商品囊括家居、家具、建材等上千品牌。100%正品、低价、7天无条件退货。" name="description">
+<link media="screen" href="../resource/css/frame.css" rel="stylesheet" type="text/css">
+<link media="screen" href="../resource/css/index.css" rel="stylesheet" type="text/css">
+<link href="../resource/css/detail.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="../resource/js/jquery.js"></script>
+<script src="../resource/js/top.js"></script>
+<script src="../resource/js/bottom.js"></script>
+<script src="../resource/js/jquery.jqzoom-core.js" type="text/javascript"></script>
+<link rel="stylesheet" href="../resource/css/jquery.jqzoom.css" type="text/css">
+
+<script>
+$(function(){
+	
+	//上部高度
+	var goodsChooseH = $('.goodsChoose').height() + 50 + 185; //50间隙高度 185为头部高度
+	var goodsInfo1 = goodsChooseH + $('.goodsInfo1').height();
+	var goodsInfo2 = goodsInfo1 + $('.goodsInfo2').height();
+	var goodsInfo3 = goodsInfo2 + $('.goodsInfo3').height();
+	//alert($('.goodsInfo1').height());
+	
+	//alert(goodsInfo1);
+	
+	adjustTab();
+	
+	$(window).scroll(function(){
+		adjustTab();
+
+	})
+	
+	
+	function adjustTab(){
+		
+		$('.spTab>ul>li:eq(0)').addClass('spTabHit').siblings().removeClass('spTabHit');
+		if($(window).scrollTop() >= goodsChooseH && $(window).scrollTop()<goodsInfo1){
+			
+			$('.spTab').css({'position':'fixed','top':'0px','width':'951px'});
+			$('.spTab>ul>li:eq(0)').addClass('spTabHit').siblings().removeClass('spTabHit');
+			$('.ppMore').hide();
+			$('.gtcar').show();
+		}else if($(window).scrollTop() < goodsChooseH){
+			$('.spTab').css({'position':'fixed','top':'0px','width':'951px'});
+			$('.spTab').css({'position':'relative'});
+			$('.ppMore').show();
+			$('.gtcar').hide();
+		}else if($(window).scrollTop() >= goodsInfo1 && $(window).scrollTop()< goodsInfo2){
+			$('.spTab').css({'position':'fixed','top':'0px','width':'951px'});
+			$('.spTab>ul>li:eq(1)').addClass('spTabHit').siblings().removeClass('spTabHit');
+		}else if($(window).scrollTop() >= goodsInfo2 && $(window).scrollTop()< goodsInfo3 ){
+			$('.spTab').css({'position':'fixed','top':'0px','width':'951px'});
+			$('.spTab>ul>li:eq(2)').addClass('spTabHit').siblings().removeClass('spTabHit');
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	$('.goodsBar ul li:last').css('marginBottom','0');	//最后一个缩略图向下无间距	
+	
+	//tab菜单
+	$('.spTab ul li').click(function(){
+		var spIndex = $(this)
+		$('.spTab').css({'position':'fixed','top':'0px','width':'1009px'});
+		//$('.spContent>div:eq('+$(this).index()+')').show().siblings().hide();
+		location.href='#'+$(this).attr('name');
+		setTimeout(function(){spIndex.addClass('spTabHit').siblings().removeClass('spTabHit')},50);
+	})
+	
+	//选择缩略图
+	$('.goodsBar ul li').click(function(){
+		$(this).addClass('sltHit').siblings().removeClass('sltHit');
+		$('.goodsImg').children('img').attr('src',$(this).children().attr('src'));		
+	})
+	
+	//选择颜色
+	$('.colorChoose li').click(function(){
+		$(this).addClass('colorHit').siblings().removeClass('colorHit');
+	})
+	
+	//选择尺寸
+	$('.sizeChoose li').click(function(){
+		$(this).addClass('sizeHit').siblings().removeClass('sizeHit');	
+	})
+	
+	
+	//上下翻页
+	var page = 1;
+	var per = 4;											//每页4张图片
+	var videoLen = $('.goodsBar ul').find('li').length;		//缩略图总数
+	if(videoLen < 5){
+		videoLen =4;
+		//$('.up').hide();
+		//$('.down').hide();
+	}
+	var page_count = videoLen - per + 1;				//页数
+	var width = 97;									//单位图片宽	
+	var widthTotal = width * videoLen + 10;				//总宽度	（+10保证所有的视频在一行里）
+	var speed = 300;									//移动速度
+	
+	$('.goodsBar ul').css({'width':widthTotal + 'px'});		//根据图片数的多少重设.goodsBar ul的高度		
+	
+	
+	$('.down').click(function(){
+		if(page == page_count){
+			return ;
+		}else{
+			$('.goodsBar ul').animate({marginLeft:'-=' + width + 'px'},speed);
+			page ++;
+		}
+	})
+
+	$('.up').click(function(){
+		
+		if(page == 1){
+			return ;
+		}else{
+			$('.goodsBar ul').animate({marginLeft:'+=' + width + 'px'},speed);
+			page --;
+		}
+	})
+	
+	//计数
+	
+	var jsNum = $('.js_num').val();
+	
+	$('.js_add').click(function(){
+		jsNum = $('.js_num').val();
+		jsNum ++;
+		$('.js_num').val(jsNum);
+	})
+	
+	$('.js_minus').click(function(){
+		jsNum = $('.js_num').val();
+		if(jsNum <= 1){
+			return;	
+		}else{
+			
+			jsNum --;
+		}
+		$('.js_num').val(jsNum);		
+	})
+	
+	
+	
+	
+	
+	//城市移入效果
+	$('.citySel>ul>li').live('mouseover',function(){
+		$(this).addClass('cityHover');	
+		//$(this).children('ul').css('display','block');
+		$(this).siblings().children('ul').css('display','none');
+	}).live('mouseleave',function(){
+		$(this).removeClass('cityHover');	
+		//$(this).children('ul').css('display','none');		
+	}).live('click',function(){
+		$(this).children('ul').css('display','block');
+	})
+	
+	$('.citybox').live('click',function(){
+		$('.citySel').show();
+		$('.citySel>ul>li>ul').hide();	
+	})
+	
+	
+	$('.citySel>ul>li>ul').mouseleave(function(){
+		$(this).hide();
+	})
+	
+	
+	
+	$('.citySel>ul>li>ul>li').live('click',function(){
+		$('.citybox').val($(this).html());
+		$('.citySel').hide();
+	})
+	
+	$('.cityClose').live('click',function(){
+		$('.citySel').hide();	
+	})
+	
+	
+	//购物车弹出框
+	$('.gotoCar').click(function(){
+		$('#tskbox').css('display','block');
+	})
+	
+	$('.tskclose').click(function(){
+		$('#tskbox').css('display','none');
+	})
+	
+	$('.tskgw').click(function(){
+		$('#tskbox').css('display','none');	
+	})
+	
+	
+	//未选中属性状态
+	$('.lijigoumai').click(function(){
+		$('.goods_tishi').css({'border':'1px solid #d73634','paddingLeft':'10px'});
+		$('.gs_gb').show();
+		$('.gs_tishi').show();
+		$('.lijigoumai').hide();
+        $('.gotoCar').hide();	
+	})
+	
+	$('.gs_gb').click(function(){
+		$('.goods_tishi').css({'border':'0','paddingLeft':'0'});
+		$('.gs_gb').hide();
+		$('.gs_tishi').hide();
+		$('.lijigoumai').show();
+        $('.gotoCar').show();		
+	})
+	
+	
+	//按钮移入效果
+	$('.lijigoumai').hover(function(){
+		$(this).addClass('lijigoumai_hover');
+	},function(){
+		$(this).removeClass('lijigoumai_hover');
+	})
+	
+	$('.gotoCar').hover(function(){
+		$(this).addClass('gotoCar_hover');
+	},function(){
+		$(this).removeClass('gotoCar_hover');
+	})
+	
+	//优惠展开
+	$('.open0').toggle(function(){
+		$('.opencontent0').show();
+		$(this).html('收起更多∧');
+	},function(){
+		$('.opencontent0').hide();
+		$(this).html('展开更多∨');	
+	});
+	$('.open1').toggle(function(){
+		$('.opencontent1').show();
+		$(this).html('收起更多∧');
+	},function(){
+		$('.opencontent1').hide();
+		$(this).html('展开更多∨');	
+	});
+	$('.open2').toggle(function(){
+		$('.opencontent2').show();
+		$(this).html('收起更多∧');
+	},function(){
+		$('.opencontent2').hide();
+		$(this).html('展开更多∨');	
+	})
+	
+	
+	
+})
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$('.jqzoom').jqzoom({
+            zoomType: 'standard',
+            lens:true,
+            preloadImages: false,
+            alwaysOn:false
+        });
+	
+});
+
+
+</script>
+</head>
+<body>
+
+
+<div class="top"></div><!--头部 内容在top.js-->
+<div class="current">
+	<div class="currentNav">
+    	
+    	<a href="index.html">首页</a> > <a href="">家具</a> > <a href="">书房</a> > 书柜/书架
+    </div>
+</div>
+<div class="goodsChoose">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  	
+    <td width="456" valign="top">
+    	<!--中部大图-->
+        <div class="goodsImg"><span class="goodsState3" style="z-index:100;"></span><a href="../resource/img/triumph_big1.jpg" class="jqzoom" rel='gal1'  title="triumph" ><img src="../resource/img/g_big.jpg" width="430" height="430" /></a></div><!--三种状态 分别是goodsState1 goodsState2 goodsState3-->
+        
+        <!--
+        <div class="share">分享到：<a title="分享到新浪微博" href="http://service.weibo.com/share/share.php?title=乌拉拉&url=http://www.baidu.com&source=bookmark&appkey=2992571369&pic=&ralateUid=&sudaref=s.jiathis.com" target="_blank" ><img src="../resource/img/share1.jpg" /></a> <a title="分享到QQ空间" target="_blank" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fwww.jiathis.com%2Fshare&title=%E5%88%86%E4%BA%AB%E5%88%B0%E5%90%84%E5%A4%A7%E7%A4%BE%E4%BC%9A%E5%8C%96%E7%BD%91%E7%BB%9C+-+%E5%8A%A0%E7%BD%91&pics=&summary="><img src="../resource/img/share2.jpg" /></a> <a title="分享到腾讯微博" href="http://share.v.t.qq.com/index.php?c=share&a=index&title=%E5%88%86%E4%BA%AB%E5%88%B0%E5%90%84%E5%A4%A7%E7%A4%BE%E4%BC%9A%E5%8C%96%E7%BD%91%E7%BB%9C+-+%E5%8A%A0%E7%BD%91%20&url=http%3A%2F%2Fwww.jiathis.com%2Fshare&appkey=118cd1d635c44eab9a4840b2fbf8b0fb&site=www.jiathis.com&pic=" target="_blank"><img src="../resource/img/share3.jpg" /></a> </div>
+        
+         <span class="jiathis_txt">分享到：</span>
+        -->
+        
+        <div style="height:90px; width:431px; margin-top:5px; position:relative;">
+        	<div class="up"><img src="../resource/img/detailLeft.jpg" /></div>
+            <div class="goodsBar">
+                <ul>
+                    <li class="sltHit"><img src="../resource/img/g_slt1.jpg" /></li>
+                    <li><img src="../resource/img/g_slt1.jpg" /></li>
+                    <li><img src="../resource/img/g_slt1.jpg" /></li>
+                    <li><img src="../resource/img/g_slt1.jpg" /></li>
+                    <li><img src="../resource/img/g_slt1.jpg" /></li>
+                    <li><img src="../resource/img/g_slt1.jpg" /></li>
+                    <li><img src="../resource/img/g_slt1.jpg" /></li>
+                </ul>
+            </div>
+            <div class="down"><img src="../resource/img/detailRight.jpg" /></div>
+        </div>
+        
+        
+        <div class="share">
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style" style="position:absolute; right:0px;">
+        	<span class="jiathis_txt">分享该商品到：</span>
+            <a class="jiathis_button_tsina"></a>
+            <a class="jiathis_button_weixin"></a>
+            <a class="jiathis_button_douban"></a>
+            <a class="jiathis_button_evernote"></a>
+            
+            
+            
+            <a class="jiathis_button_qzone"></a>
+            
+            <a class="jiathis_button_tqq"></a>
+            
+            <a class="jiathis_button_renren"></a>
+            <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+            <a class="jiathis_counter_style"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1374108370897446" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+        </div>
+        
+        
+        
+        
+    </td>
+    <td valign="top">
+    	<div style="position:relative; ">
+    	<!--右部商品信息-->
+        <div class="goods_title" title="[彼岸阳光]  地中海风格 进口实木书柜[彼岸阳光]  地中海风格 进口实木书柜">[彼岸阳光]  地中海风格 进口实木书柜[彼岸阳光]  地中海风格 进口实木书柜</div>
+        
+        <div class="goods_subtitle">小户型家庭首选产品！设计合理，占用空间小！精选优质实木材质!</div>
+        
+        <div class="dotted" ></div>
+        
+        <div class="goods_no">商品编号：741098</div>
+        
+        
+        
+        <div class="goods_price" style="margin-top:2px;">促<span style="margin-left:6px;"></span>销<span style="margin-left:6px;"></span>价：<span class="g_p1">¥</span> <span class="g_p2">349.00</span> <input type="button" disabled="disabled" value="3.5折" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> <img src="../resource/img/djs.jpg" style="margin-left:10px;" /> 剩余<span class="c3">06</span>天<span class="c3">12</span>小时<span class="c3">45</span>分<span class="c3">10</span>秒</div>
+        <div class="goods_price">原<span style="margin-left:6px;"></span>价<span style="margin-left:6px;"></span>格：<span class="price_del">¥1099.00</span></div>
+        
+        <div class="goods_support">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+           <tr>
+            <td width="64" style="vertical-align:top;">促销信息：</td>
+            <td style="vertical-align:top; "> 
+            	<div style="color:#c00; overflow:hidden; line-height:22px; "><input type="button" disabled="disabled" value="折扣" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 整单9折优惠</div>
+                <div class="opencontent0" style="display:none; padding-bottom:10px;color:#c00;">
+                    <div style="margin-top:10px;"><input type="button" disabled="disabled" value="满减" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满99.0减20.0，满159.0减30.0</div>
+                    <div style="margin-top:10px;"><input type="button" disabled="disabled" value="满赠" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满99.0赠20.0，满159.0赠30.0</div>
+                </div>
+            </td>
+            <td width="100" style="vertical-align:top;"><span class="open0" style="cursor:pointer;color:#4f467c">展开更多∨</span></td>
+          </tr>
+
+           <tr>
+            <td width="64"></td>
+            <td style="vertical-align:top;"> 
+            	<div style="color:#c00;line-height:22px;"><input type="button" disabled="disabled" value="折扣" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满100减20</div>
+                <div class="opencontent1" style="display:none; color:#c00;line-height:22px;padding-bottom:10px">
+                    <div style="margin-top:10px;"><input type="button" disabled="disabled" value="满减" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满99.0减20.0，满159.0减30.0</div>
+                    <div style="margin-top:10px;"><input type="button" disabled="disabled" value="满赠" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满99.0赠20.0，满159.0赠30.0</div>
+                </div>
+            </td>
+            <td width="100" style="vertical-align:top;"><span class="open1" style="cursor:pointer;color:#4f467c">展开更多∨</span></td>
+          </tr>
+
+           <tr>
+            <td width="64"></td>
+            <td style="vertical-align:top;"> 
+            	<div style="color:#c00;"><input type="button" disabled="disabled" value="折扣" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 整单9折优惠</div>
+                <div class="opencontent2" style="display:none; color:#c00;padding-bottom: 10px;">
+                    <div style="margin-top:10px;"><input type="button" disabled="disabled" value="满减" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满99.0减20.0，满159.0减30.0</div>
+                    <div style="margin-top:10px;"><input type="button" disabled="disabled" value="满赠" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满99.0赠20.0，满159.0赠30.0</div>
+                </div>
+            </td>
+            <td width="100" style="vertical-align:top;"><span class="open2" style="cursor:pointer;color:#4f467c">展开更多∨</span></td>
+          </tr>
+          
+          <tr style="height:35px;">
+          	<td colspan="2" valign="middle" >发<span style="margin-left:6px;"></span>送<span style="margin-left:6px;"></span>至： <input type="button" class="citybox" value="请选择..." /> <select style="width:98px;"><option>浦陀区</option></select> <!--<input class="btn2" type="button" value="运费说明" />-->
+            	<div style="position:relative; *z-index:10;">
+            	<div class="citySel" style="left:64px; top:-1px;">
+                	<div class="cityClose">x</div>
+                	<ul>
+                    	<li><div>新疆维物尔自治区</div><ul><li>新疆维物尔自治区自治区</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>上海</div><ul><li>浦东</li><li>青浦</li></ul></li>
+                        <li><div>黑龙江</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>上海</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>北京</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>上海</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>北京</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>上海</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>北京</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>上海</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>北京</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>上海</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>北京</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>上海</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>北京</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                        <li><div>上海</div><ul><li>北京1</li><li>北京2</li><li>北京3</li><li>北京4</li><li>北京5</li><li>北京6</li></ul></li>
+                    </ul>
+                </div>
+                </div>
+            </td>
+          </tr>
+          
+          <tr style="height:35px;">
+            <td>服<span class="space1"></span>务：</td>
+            <td>由红星家品会 <select style="width:160px;"><option>送货上门并安装 ￥399</option><option>送货上门 ￥240</option><option>自取 ￥50</option></select> <a href="">运费说明</a></td>
+          </tr>
+          
+        </table>
+        </div>
+        
+        
+        
+        
+        
+        
+        <!--<div class="goods_arrive" style="margin-top:10px;">本商品仅限上海地区购买   预计到货时间: 23天</div>-->
+       
+        
+        <div class="dotted"></div>
+        <div class="goods_support goods_tishi" style="position:relative;">
+        <div class="gs_gb" style="position:absolute; right:3px; top:4px; cursor:pointer; display:none;"><img src="../resource/img/gb.jpg" /></div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr style="height:45px;">
+            <td width="64" style="padding-top:5px;">颜<span class="space1"></span>色：</td>
+            <!--<td style="padding-top:15px;"><ul class="colorChoose"><li class="colorHit"><img src="../resource/img/color/color1.jpg" width="55" height="25" /></li><li><img src="../resource/img/color/color2.jpg" /></li><li><img src="../resource/img/color/color3.jpg" /></li></ul></td>-->
+            <td style="padding-top:15px;"><ul class="colorChoose"><li class="colorHit">黄色</li><li>浅黄色</li><li>深黄色</li></ul></td>
+          </tr>
+          <tr style="height:45px;">
+            <td>尺<span class="space1"></span>码：</td>
+            <td style="padding-top:10px;"><ul class="sizeChoose"><li>XS</li><li>S</li><li class="sizeHit">M</li><li>L</li></ul></td>
+          </tr>
+          <tr style="height:45px;">
+            <td>购买数量：</td>
+            <td style="padding-top:7px;"><div class="jishu"><div class="js_add"></div><div class="js_minus"></div><input type="text" value="1" class="js_num" /></div></td>
+          </tr>
+        </table>
+        <div class="gs_tishi" style="color:#d73634; margin:10px 0; display:none;">请勾选您要的商品信息</div>
+        </div>
+        <div class="lijigoumai"></div><!--立即购买-->
+        <div id="addcart"  class="gotoCar" style="position:relative;"></div><!--放入购物车-->    
+        
+        <!--<div style="color:#404040; font-size:14px;">该商品已售完，不能购买，您可以看看其他商品！</div>--> 
+        
+        <!--弹出框-->
+        <div id="tskbox" style="position:absolute; left:179px; top:300px; width:253px; height:114px; display:none;">
+            <div class="tskclose" style="position:absolute; right:0px; top:0px; width:14px; height:14px; cursor:pointer;"></div><!--关闭-->
+            <div class="tskjs" style="position:absolute; left:16px; top:61px; width:109px; height:34px; cursor:pointer;"></div><!--去结算-->
+            <div class="tskgw" style="position:absolute; left:130px; top:61px; width:109px; height:34px; cursor:pointer;"></div><!--继续购物-->
+            <img src="../resource/img/addok.jpg" />
+        </div>
+        
+        </div>
+    </td>
+  </tr>
+</table>
+</div>
+<div class="goodsInfo">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="240" valign="top">
+    
+    	<div class="xqTitle">相关分类</div>
+        <div class="flList">
+        	<ul>
+            	<li><a href="">实木床</a></li>
+                <li><a href="">板木床</a></li>
+                <li><a href="">硬床</a></li>
+                <li><a href="">软床</a></li>
+                <li><a href="">布艺床</a></li>
+                <li><a href="">皮质床</a></li>
+            </ul>
+        </div>
+    
+    	<div style="clear:both"></div>
+        
+        <div class="xqTitle">同类其他品牌</div>
+        <div class="flList">
+        	<ul>
+            	<li><a href="">安曼</a></li>
+                <li><a href="">鹿鸠</a></li>
+                <li><a href="">海鸥</a></li>
+                <li><a href="">玛莎家居</a></li>
+                <li><a href="">聖喬治</a></li>
+                <li><a href="">FANTA福</a></li>
+                <li><a href="">安曼</a></li>
+                <li><a href="">鹿鸠</a></li>
+                <li><a href="">海鸥</a></li>
+                <li><a href="">玛莎家居</a></li>
+                <li><a href="">聖喬治</a></li>
+                <li><a href="">FANTA福</a></li>
+            </ul>
+        </div>
+    
+    	<div style="clear:both"></div>
+    
+    
+    
+    	<div class="xqTitle">销售排行</div>
+        <div class="xqList">
+        	<ul>
+            	<li class="xqImg"><img src="../resource/img/g_xq1.jpg" width="100" height="100" /></li>
+                <li class="xqDesc"><a href="">美达斯 双门附格层架鞋柜 浅胡桃木色11667</a></li>
+                <li class="xqPrice">￥399.00</li>
+                <li class="xqMarket">￥599.00</li>
+            </ul>
+            <ul>
+            	<li class="xqImg"><img src="../resource/img/g_xq1.jpg" width="100" height="100" /></li>
+                <li class="xqDesc"><a href="">美达斯 双门附格层架鞋柜 浅胡桃木色11667</a></li>
+                <li class="xqPrice">￥399.00</li>
+                <li class="xqMarket">￥599.00</li>
+            </ul>
+            <ul>
+            	<li class="xqImg"><img src="../resource/img/g_xq1.jpg" width="100" height="100" /></li>
+                <li class="xqDesc"><a href="">美达斯 双门附格层架鞋柜 浅胡桃木色11667</a></li>
+                <li class="xqPrice">￥399.00</li>
+                <li class="xqMarket">￥599.00</li>
+            </ul>
+            <ul style="border-bottom:0;">
+            	<li class="xqImg"><img src="../resource/img/g_xq1.jpg" width="100" height="100" /></li>
+                <li class="xqDesc"><a href="">美达斯 双门附格层架鞋柜 浅胡桃木色11667</a></li>
+                <li class="xqPrice">￥399.00</li>
+                <li class="xqMarket">￥599.00</li>
+            </ul>
+           
+        </div>
+        
+        <div class="xqTitle" style="margin-top:20px;">购买了该商品的用户还购买了</div>
+        <div class="xqList">
+        	<ul>
+            	<li class="xqImg"><img src="../resource/img/g_xq1.jpg" width="100" height="100" /></li>
+                <li class="xqDesc"><a href="">美达斯 双门附格层架鞋柜 浅胡桃木色11667</a></li>
+                <li class="xqPrice">￥399.00</li>
+                <li class="xqMarket">￥599.00</li>
+            </ul>
+            <ul>
+            	<li class="xqImg"><img src="../resource/img/g_xq1.jpg" width="100" height="100" /></li>
+                <li class="xqDesc"><a href="">美达斯 双门附格层架鞋柜 浅胡桃木色11667</a></li>
+                <li class="xqPrice">￥399.00</li>
+                <li class="xqMarket">￥599.00</li>
+            </ul>
+            <ul>
+            	<li class="xqImg"><img src="../resource/img/g_xq1.jpg" width="100" height="100" /></li>
+                <li class="xqDesc"><a href="">美达斯 双门附格层架鞋柜 浅胡桃木色11667</a></li>
+                <li class="xqPrice">￥399.00</li>
+                <li class="xqMarket">￥599.00</li>
+            </ul>
+            <ul style="border-bottom:0;">
+            	<li class="xqImg"><img src="../resource/img/g_xq1.jpg" width="100" height="100" /></li>
+                <li class="xqDesc"><a href="">美达斯 双门附格层架鞋柜 浅胡桃木色11667</a></li>
+                <li class="xqPrice">￥399.00</li>
+                <li class="xqMarket">￥599.00</li>
+            </ul>
+           
+        </div>
+    </td>
+    <td valign="top">
+    	
+     	
+    	<div class="spTab">
+            <div class="ppMore">了解更多该品牌商品 <span class="c4">MORE...></span></div>
+            <ul>
+                <li class="spTabHit" name="xiangqing" >商品详情</li>
+                <li name="guige">规格参数</li>
+                <li name="shouhou">售后服务</li>
+            </ul>
+            <div id="addcart" class="gotoCar gtcar" style="position:absolute; right:0px; top:45px; width:120px; height:30px; background-position: -142px -27px; display:none;"></div>
+        </div>
+        
+       
+        
+        <div class="spContent">
+        	<!--商品详情-->
+        	<div>
+            
+            	
+                <div class="goodsInfo1">
+                
+                <a name="xiangqing" style="display:block;"></a>
+                <div style="height:20px; display:block; "></div>
+            	<div class="spAttr">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td>商品名称：桃花芯木7套装（1+2+3+茶几+方几+2凳子）</td>
+                    <td>品牌：凯撒豪庭</td>
+                    <td>商品尺寸：899×355×1900mm</td>
+                  </tr>
+                  <tr>
+                    <td>商品编号：KSHT-RX-XC31-TZ </td>
+                    <td>商品材质：桃花芯木 </td>
+                    <td>商品产地：山东青岛</td>
+                  </tr>
+                  <tr>
+                    <td>订单模式：24小时闪电发货</td>
+                    <td>净重量：79KG </td>
+                    <td>商品体积：1.1立方米</td>
+                  </tr>
+                </table>
+                </div>
+                 <div><img src="../resource/img/desc_03.jpg" alt="服务承若" /></div>
+                <div><img src="../resource/img/desc_05.jpg" alt="商品详情" /></div>
+                <div><img src="../resource/img/g_info1.jpg" /></div>
+               
+                </div>
+                
+                
+                
+                <a name="guige" style="display:block;" href="javascript:void(0)"></a>
+                <div style="height:40px;"></div>
+                <div class="goodsInfo2">
+                <div>
+                	<img src="../resource/img/desc_08.jpg" alt="参数规格" />
+
+                </div>
+                
+                <div class="guigetable">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <th>材料说明</th>
+                    <td>橡胶木+松木+中纤板+白杨木夹板+宝丽板+嵚入式门铰</td>
+                  </tr>
+                  <tr>
+                    <th>主材质</th>
+                    <td>橡胶木（衣柜脚、挂衣杆）；松木（层板）</td>
+                  </tr>
+                  <tr>
+                    <th>副材质</th>
+                    <td>中纤板（顶板、侧板、门板、底板、背板、挂衣托、抽面板、抽底板）；白杨木夹板（抽盒）；宝丽板（背板、抽底板双面贴）；嵚入式门铰</td>
+                  </tr>
+                  <tr>
+                    <th>长度</th>
+                    <td>1.9米</td>
+                  </tr>
+                  <tr>
+                    <th>宽度</th>
+                    <td>0.59米</td>
+                  </tr>
+                  <tr>
+                    <th>高度</th>
+                    <td>2.195米</td>
+                  </tr>
+                  <tr>
+                    <th>包装件数</th>
+                    <td>4</td>
+                  </tr>
+                  <tr>
+                    <th>包装类型</th>
+                    <td>KD</td>
+                  </tr>
+                  <tr>
+                    <th>产品特征</th>
+                    <td>传承优雅，引领风尚，简美主义注意实用，舒适与功能于一体，利用有限的住房空间，布置出不同的生活韵味，简约而不简单。</td>
+                  </tr>
+                  <tr>
+                    <th>细节描述</th>
+                    <td>此衣柜款式设计大气、时尚，柜脚为实木材质的车积脚，挂衣杆设计成圆棒形，结实牢固。</td>
+                  </tr>
+                  <tr>
+                    <th>空间参考</th>
+                    <td>空间面积在10平方米左右就可以放出图中的效果。</td>
+                  </tr>
+                  <tr>
+                    <th>费用情况</th>
+                    <td>买家承担运费，物流费用按体积计算！产品根据地区、体积、重量计费，具体地方运费买家可随时咨询。我们会为您选择最实惠，最快的货运公司发货。</td>
+                  </tr>
+                  <tr>
+                    <th>发货周期</th>
+                    <td>发货周期为45天左右，详情可以咨询在线客服。</td>
+                  </tr>
+                  <tr>
+                    <th>保养说明</th>
+                    <td>避免利器或硬质物体与家具表面直接接触，以防缩短家具的使用寿命。</td>
+                  </tr>
+                  <tr>
+                    <th>友情提示</th>
+                    <td>所有产品均为实物拍摄，因摄影或显示原因，产品颜色请以实物为准。产品尺寸因人工测量，有少许误差，敬请谅解。</td>
+                  </tr>
+                  <tr>
+                    <th>规格</th>
+                    <td>1900*590*2195mm</td>
+                  </tr>
+                </table>
+                </div>
+                </div>
+                
+                <a name="shouhou" style="display:block;" href="javascript:void(0)"></a>
+                <div style="height:40px;"></div>
+                <div class="goodsInfo3" style="height:1777px;">
+                
+                <div class="service1"></div>
+                <div><img src="../resource/img/g_info2.jpg" /></div>
+                
+                <div class="buynotice"></div>
+                <div class="notesTitle"><span class="notesNo">01</span> 产品说明</div>
+                <p class="noteP">红星家品会内所有商品均为实物拍摄，且尽量接近实物。但由于灯光、不同显示器的显示偏差以及每个人对色彩的理解不同所导致的色差
+问题不可避免。此类问题不属于质量问题，不能接受色差的朋友请慎拍。</p>
+				<div class="notesTitle"><span class="notesNo">02</span> 快递说明</div>
+                <p class="noteP">红星家品会商品使用最优质的第三方物流进行配送。</p>
+                <div class="notesTitle"><span class="notesNo">03</span> 退换货须知</div>
+                <p class="noteP">商品签收后7天内（以快递的送货单上的签收日期为准）需要申请退换货的，必须网上提交退换货申请并由家品会客服受理通过，方可无条件退货（除顾客人为损坏）。</p>
+                <div class="notesTitle"><span class="notesNo">04</span> 售后服务</div>
+                <p class="noteP">无理由退货:   客户购买商品7日内（含7日，自客户收到商品之日起计算）不需任何理由就能在网上提交退货申请，家品会客服受理并决定是否审核通过。法定节假日、停电、天气等不可抗力情况除外。</p>
+       			<p class="noteP">售后无忧：客户购买商品15日内（自客户收到商品之日起计算）如出现商品质量问题（非消费者原因导致），家品会售后服务部收到故障品并确认属于质量故障（以国家三包法等有关法律、法规为准）将在最快时间内帮顾客联系商家并妥善解决退换货。如发生退款我司除全额退款外再给予客户10元优惠券作为补偿！</p>
+       			<p class="noteP">售后到家:   自商品售出在国家规定有效保障期内，家品会将提供符合国家三包标准的售后服务。</p>
+                </div>
+                
+            </div>
+            <!--商品详情 end-->
+            
+            
+            
+        </div>
+    </td>
+  </tr>
+</table>
+
+</div>
+<!--加入购物车弹层-->
+<div id="popbox">
+	<h2>添加成功 <span id="closepop">关闭</span></h2>
+	<div id="popinfo">
+		<div class="popimg poptips"></div>
+		<p class="popgo">
+			<a href="#" class="popbuy popimg">去结算</a>
+			<a href="#" class="popcon popimg">继续购物</a>
+		</p>
+	</div>
+</div>
+<div id="popbg"></div>
+<!--加入购物车弹层 end-->
+
+
+
+<div class="bottom"></div>
+
+
+
+<script type="text/javascript" src="../resource/js/index.js"></script>
+<script type="text/javascript" src="../resource/js/frame.js"></script>
+<script>
+$(function(){
+
+	$("#addcart").click(function(){
+		$("#popbox, #popbg").show();
+	})
+	$("#closepop").click(function(){
+		$("#popbox, #popbg").hide();
+	});	
+
+})
+</script>
+
+</body>
+</html>

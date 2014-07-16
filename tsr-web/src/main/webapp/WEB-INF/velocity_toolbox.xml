@@ -3,17 +3,17 @@
 	<tool>
 		<key>dateTimeUtil</key>
 		<scope>application</scope>
-		<class>com.rsos.comm.util.DateTimeUtils</class>
+		<class>com.tsr.comm.util.DateTimeUtils</class>
 	</tool>
 	<tool>
         <key>staticSourcePathUtil</key>
         <scope>application</scope>
-        <class>com.rsos.comm.util.StaticSourcePathUtil</class>
+        <class>com.tsr.comm.util.StaticSourcePathUtil</class>
     </tool>
 	<tool>
         <key>amountUtil</key>
         <scope>application</scope>
-        <class>com.rsos.comm.util.AmountUtils</class>
+        <class>com.tsr.comm.util.AmountUtils</class>
     </tool>
     <tool>
         <key>date</key>

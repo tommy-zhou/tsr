@@ -1,9 +1,15 @@
 package com.tsr.api.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ProductInventoryStock {
-    private Integer inventoryStockId;
+public class ProductInventoryStock implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer inventoryStockId;
 
     private Integer productId;
 

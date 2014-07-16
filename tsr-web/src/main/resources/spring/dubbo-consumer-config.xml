@@ -8,75 +8,16 @@
     <!-- ========================= dubbo RESOURCE DEFINITIONS ========================= -->
     
     <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
-    <dubbo:application name="consumer-of-hxshop"  />
+    <dubbo:application name="consumer-of-tsr"  />
  
     <!-- 使用multicast广播注册中心暴露发现服务地址 -->
     <!--  <dubbo:registry address="${zookeeper.address}" />-->
     <dubbo:registry protocol="zookeeper" address="${zookeeper.address}" />
     
     <!-- 服务消费者过期时间配置 -->
-    <dubbo:consumer timeout="1000000" retries="0"  check = "${consumer_check}"/>
+    <dubbo:consumer timeout="1000000" retries="0" />
 
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
-    <!-- <dubbo:reference id="helloService" interface="com.rsos.api.service.HelloService" /> -->	
-    <!-- <dubbo:reference id="brandService" interface="com.rsos.api.service.BrandService" /> -->
-<!--     <dubbo:reference id="userService" interface="com.rsos.api.service.UserService" /> -->
-<!--     <dubbo:reference id="userCreditLogService" interface="com.rsos.api.service.UserCreditLogService" /> -->
-    
-    <!--<dubbo:reference id="publisherManager"  interface="com.openecommerce.api.service.Publisher" />
-    <dubbo:reference id="helloService" interface="com.rsos.api.service.HelloService" />
-    <dubbo:reference id="loginService" interface="com.rsos.api.service.LoginService" />
-    <dubbo:reference id="registerService" interface="com.rsos.api.service.RegisterService" />-->
-    
-    <dubbo:reference id="userService" interface="com.rsos.api.service.user.UserServiceApi" />
-    <dubbo:reference id="userCreditLogService" interface="com.rsos.api.service.user.UserCreditLogServiceApi" />
-    <dubbo:reference id="userCreditLogHisService" interface="com.rsos.api.service.user.UserCreditLogHisServiceApi" />
-    <dubbo:reference id="userFavoriteBrandService" interface="com.rsos.api.service.user.UserFavoriteBrandServiceApi" />
-    <dubbo:reference id="userAddressService" interface="com.rsos.api.service.user.UserAddressServiceApi" />
-    <dubbo:reference id="systemRegionService" interface="com.rsos.api.service.comm.SystemRegionServiceApi" />
-    <dubbo:reference id="mailService" interface="com.rsos.api.service.comm.MailServiceApi" />
-    <dubbo:reference id="userCouponService" interface="com.rsos.api.service.user.UserCouponServiceApi" />
-    <dubbo:reference id="productGoodsService" interface="com.rsos.api.service.goods.ProductGoodsServiceApi" />
-    <dubbo:reference id="productExtCategoryService"  interface="com.rsos.api.service.goods.ProductExtCategoryServiceApi"/>
-    <dubbo:reference id="brandCategoryService"  interface="com.rsos.api.service.goods.BrandCategoryServiceApi"/>
-    <dubbo:reference id="brandService"  interface="com.rsos.api.service.goods.BrandServiceApi"/>
-    <dubbo:reference id="phoneService"  interface="com.rsos.api.service.comm.PhoneServiceApi"/>
-    <dubbo:reference id="webPageService"  interface="com.rsos.api.service.webpage.WebPageServiceApi"/>
-    <dubbo:reference id="orderReturnService"  interface="com.rsos.api.service.order.OrderReturnServiceApi"/>
-    <dubbo:reference id="systemCodeService" interface="com.rsos.api.service.comm.SystemCodeServiceApi" />
-    <dubbo:reference id="orderInfoService"  interface="com.rsos.api.service.order.OrderInfoServiceApi"/>
-    <dubbo:reference id="webPageObjectService"  interface="com.rsos.api.service.webpage.WebPageObjectServiceApi"/>
-    <dubbo:reference id="orderShipmentService"  interface="com.rsos.api.service.order.OrderShipmentServiceApi"/>
-
-    <dubbo:reference id="cartItemService"  interface="com.rsos.api.service.goods.CartItemServiceApi"/>
-    <dubbo:reference id="cartService"  interface="com.rsos.api.service.goods.CartServiceApi"/>
-
-    <dubbo:reference id="orderCouponService"  interface="com.rsos.api.service.order.OrderCouponServiceApi"/>
-    <dubbo:reference id="orderPayLogService"  interface="com.rsos.api.service.order.OrderPayLogServiceApi"/>
-    <dubbo:reference id="couponService"  interface="com.rsos.api.service.user.CouponServiceApi"/>
-    <dubbo:reference id="cmsService"  interface="com.rsos.api.service.cms.CmsServiceApi"/>
-
-    <dubbo:reference id="productInfoService" interface="com.rsos.api.service.goods.ProductInfoServiceApi" />  
-    <dubbo:reference id="productGiftService"  interface="com.rsos.api.service.goods.ProductGiftServiceApi"/>
-    <dubbo:reference id="velocityService"  interface="com.rsos.api.service.comm.VelocityServiceApi"/>
-    <dubbo:reference id="egouService" interface="com.rsos.api.service.cps.EgouServiceApi" />
-    <dubbo:reference id="orderRuleService" interface="com.hxshop.rule.api.service.OrderRuleService" />
-    <dubbo:reference id="goodsRuleService" interface="com.hxshop.rule.api.service.GoodsRuleService" />
-    <dubbo:reference id="cpsOrderService" interface="com.rsos.api.service.cps.CpsOrderServiceApi" />
-    <dubbo:reference id="webKeywordsInfoService" interface="com.rsos.api.service.maintaince.WebKeywordsInfoServiceApi" />
-    
-    <dubbo:reference id="webExtCategorySettingService"  interface="com.rsos.api.service.goods.WebExtCategorySettingServiceApi"/>
-    <dubbo:reference id="webArticleService"  interface="com.rsos.api.service.webpage.WebArticleServiceApi"/>
-    <dubbo:reference id="eventActivityUrlService" interface="com.rsos.api.service.maintaince.EventActivityUrlServiceApi" />
-    <dubbo:reference id="systemEventServiceApi" interface="com.rsos.api.service.event.SystemEventServiceApi" />
-    <dubbo:reference id="productInventoryStockServiceApi" interface="com.rsos.api.service.goods.ProductInventoryStockServiceApi" />
-    <dubbo:reference id="serviceTotalService" interface="com.rsos.api.service.goods.ServiceTotalServiceApi" />
-    <dubbo:reference id="userProductCommentStatisticsService" interface="com.rsos.api.service.user.UserProductCommentStatisticsServiceApi"/>
-    <dubbo:reference id="userProductCommentService" interface="com.rsos.api.service.user.UserProductCommentServiceApi" />
-    <dubbo:reference id="productTagService" interface="com.rsos.api.service.goods.ProductTagServiceApi" />
-    <dubbo:reference id="userProductLikeService" interface="com.rsos.api.service.user.UserProductLikeServiceApi" />
-    <dubbo:reference id="userProductViewService" interface="com.rsos.api.service.user.UserProductViewServiceApi" />
-    <dubbo:reference id="creditCardService" interface="com.rsos.api.service.user.CreditCardServiceApi" />
-    <dubbo:reference id="userProductConsultService" interface="com.rsos.api.service.user.UserProductConsultServiceApi" />
+    <dubbo:reference id="productGoodsService" interface="com.tsr.api.service.ProductGoodsServiceApi" />
 
 </beans>

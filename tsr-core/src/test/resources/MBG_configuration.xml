@@ -24,13 +24,13 @@
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.tsr.core.persistence"
+        <sqlMapGenerator targetPackage="com.tsr.core.persistence.writer"
             targetProject="E:\项目文档\tsr\source_code\tsr\tsr-core\src\main\resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
        <javaClientGenerator type="XMLMAPPER"
-            targetPackage="com.tsr.core.persistence"
+            targetPackage="com.tsr.core.persistence.writer"
             targetProject="E:\项目文档\tsr\source_code\tsr\tsr-core\src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>

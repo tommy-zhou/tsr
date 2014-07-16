@@ -11,15 +11,15 @@
 
 	<!-- ========================= Repository RESOURCE DEFINITIONS ========================= -->
 
-	<!-- mybatis config -->
+	<!-- mybatis config 
 	<bean id="readerSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="readerDataSource" />
-		<property name="typeAliasesPackage" value="com.rsos.api.domain" />
+		<property name="typeAliasesPackage" value="com.tsr.api.bean" />
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.rsos.core.persistence.reader" />
+		<property name="basePackage" value="com.tsr.core.persistence.reader" />
 		<property name="sqlSessionFactoryBeanName" value="readerSqlSessionFactory" />
 	</bean>
-
+	-->
 </beans>

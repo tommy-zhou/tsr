@@ -1,10 +1,16 @@
 package com.tsr.api.bean;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class ProductGoods {
-    private Integer productGoodsId;
+public class ProductGoods implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer productGoodsId;
 
     private Integer productId;
 

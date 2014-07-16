@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tsr.core.persistence.writer.ProductInventoryStockMapper" >
+  <resultMap id="BaseResultMap" type="com.tsr.api.bean.ProductInventoryStock" >
+    <id column="inventory_stock_id" property="inventoryStockId" jdbcType="INTEGER" />
+    <result column="product_id" property="productId" jdbcType="INTEGER" />
+    <result column="product_goods_id" property="productGoodsId" jdbcType="INTEGER" />
+    <result column="qty" property="qty" jdbcType="INTEGER" />
+    <result column="real_qty" property="realQty" jdbcType="INTEGER" />
+    <result column="lock_qty" property="lockQty" jdbcType="INTEGER" />
+    <result column="is_in_stock" property="isInStock" jdbcType="INTEGER" />
+    <result column="backorders" property="backorders" jdbcType="TINYINT" />
+    <result column="notify_stock_qty" property="notifyStockQty" jdbcType="INTEGER" />
+    <result column="is_synchronization" property="isSynchronization" jdbcType="TINYINT" />
+    <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />
+    <result column="create_operator" property="createOperator" jdbcType="VARCHAR" />
+    <result column="update_datetime" property="updateDatetime" jdbcType="TIMESTAMP" />
+    <result column="update_operator" property="updateOperator" jdbcType="VARCHAR" />
+    <result column="safe_qty" property="safeQty" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    inventory_stock_id, product_id, product_goods_id, qty, real_qty, lock_qty, is_in_stock, 
+    backorders, notify_stock_qty, is_synchronization, create_datetime, create_operator, 
+    update_datetime, update_operator, safe_qty
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_inventory_stock
+    where inventory_stock_id = #{inventoryStockId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product_inventory_stock
+    where inventory_stock_id = #{inventoryStockId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tsr.api.bean.ProductInventoryStock" >
+    insert into product_inventory_stock (inventory_stock_id, product_id, product_goods_id, 
+      qty, real_qty, lock_qty, 
+      is_in_stock, backorders, notify_stock_qty, 
+      is_synchronization, create_datetime, create_operator, 
+      update_datetime, update_operator, safe_qty
+      )
+    values (#{inventoryStockId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{productGoodsId,jdbcType=INTEGER}, 
+      #{qty,jdbcType=INTEGER}, #{realQty,jdbcType=INTEGER}, #{lockQty,jdbcType=INTEGER}, 
+      #{isInStock,jdbcType=INTEGER}, #{backorders,jdbcType=TINYINT}, #{notifyStockQty,jdbcType=INTEGER}, 
+      #{isSynchronization,jdbcType=TINYINT}, #{createDatetime,jdbcType=TIMESTAMP}, #{createOperator,jdbcType=VARCHAR}, 
+      #{updateDatetime,jdbcType=TIMESTAMP}, #{updateOperator,jdbcType=VARCHAR}, #{safeQty,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tsr.api.bean.ProductInventoryStock" >
+    insert into product_inventory_stock
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="inventoryStockId != null" >
+        inventory_stock_id,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="productGoodsId != null" >
+        product_goods_id,
+      </if>
+      <if test="qty != null" >
+        qty,
+      </if>
+      <if test="realQty != null" >
+        real_qty,
+      </if>
+      <if test="lockQty != null" >
+        lock_qty,
+      </if>
+      <if test="isInStock != null" >
+        is_in_stock,
+      </if>
+      <if test="backorders != null" >
+        backorders,
+      </if>
+      <if test="notifyStockQty != null" >
+        notify_stock_qty,
+      </if>
+      <if test="isSynchronization != null" >
+        is_synchronization,
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime,
+      </if>
+      <if test="createOperator != null" >
+        create_operator,
+      </if>
+      <if test="updateDatetime != null" >
+        update_datetime,
+      </if>
+      <if test="updateOperator != null" >
+        update_operator,
+      </if>
+      <if test="safeQty != null" >
+        safe_qty,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="inventoryStockId != null" >
+        #{inventoryStockId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productGoodsId != null" >
+        #{productGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="qty != null" >
+        #{qty,jdbcType=INTEGER},
+      </if>
+      <if test="realQty != null" >
+        #{realQty,jdbcType=INTEGER},
+      </if>
+      <if test="lockQty != null" >
+        #{lockQty,jdbcType=INTEGER},
+      </if>
+      <if test="isInStock != null" >
+        #{isInStock,jdbcType=INTEGER},
+      </if>
+      <if test="backorders != null" >
+        #{backorders,jdbcType=TINYINT},
+      </if>
+      <if test="notifyStockQty != null" >
+        #{notifyStockQty,jdbcType=INTEGER},
+      </if>
+      <if test="isSynchronization != null" >
+        #{isSynchronization,jdbcType=TINYINT},
+      </if>
+      <if test="createDatetime != null" >
+        #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createOperator != null" >
+        #{createOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDatetime != null" >
+        #{updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateOperator != null" >
+        #{updateOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="safeQty != null" >
+        #{safeQty,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tsr.api.bean.ProductInventoryStock" >
+    update product_inventory_stock
+    <set >
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productGoodsId != null" >
+        product_goods_id = #{productGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="qty != null" >
+        qty = #{qty,jdbcType=INTEGER},
+      </if>
+      <if test="realQty != null" >
+        real_qty = #{realQty,jdbcType=INTEGER},
+      </if>
+      <if test="lockQty != null" >
+        lock_qty = #{lockQty,jdbcType=INTEGER},
+      </if>
+      <if test="isInStock != null" >
+        is_in_stock = #{isInStock,jdbcType=INTEGER},
+      </if>
+      <if test="backorders != null" >
+        backorders = #{backorders,jdbcType=TINYINT},
+      </if>
+      <if test="notifyStockQty != null" >
+        notify_stock_qty = #{notifyStockQty,jdbcType=INTEGER},
+      </if>
+      <if test="isSynchronization != null" >
+        is_synchronization = #{isSynchronization,jdbcType=TINYINT},
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createOperator != null" >
+        create_operator = #{createOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDatetime != null" >
+        update_datetime = #{updateDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateOperator != null" >
+        update_operator = #{updateOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="safeQty != null" >
+        safe_qty = #{safeQty,jdbcType=INTEGER},
+      </if>
+    </set>
+    where inventory_stock_id = #{inventoryStockId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tsr.api.bean.ProductInventoryStock" >
+    update product_inventory_stock
+    set product_id = #{productId,jdbcType=INTEGER},
+      product_goods_id = #{productGoodsId,jdbcType=INTEGER},
+      qty = #{qty,jdbcType=INTEGER},
+      real_qty = #{realQty,jdbcType=INTEGER},
+      lock_qty = #{lockQty,jdbcType=INTEGER},
+      is_in_stock = #{isInStock,jdbcType=INTEGER},
+      backorders = #{backorders,jdbcType=TINYINT},
+      notify_stock_qty = #{notifyStockQty,jdbcType=INTEGER},
+      is_synchronization = #{isSynchronization,jdbcType=TINYINT},
+      create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      create_operator = #{createOperator,jdbcType=VARCHAR},
+      update_datetime = #{updateDatetime,jdbcType=TIMESTAMP},
+      update_operator = #{updateOperator,jdbcType=VARCHAR},
+      safe_qty = #{safeQty,jdbcType=INTEGER}
+    where inventory_stock_id = #{inventoryStockId,jdbcType=INTEGER}
+  </update>
+</mapper>

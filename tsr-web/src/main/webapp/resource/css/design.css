@@ -1,0 +1,58 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ds_container{width:1190px; margin:0 auto;}
+.ds_banner{margin-top:10px; margin-bottom:10px;}
+
+.ds_nav{background:url(static/img/ds_navbg.jpg) repeat-x;  height:41px;  }
+
+.ds_nav a{ display:block; background:url(static/img/ds_nav_default.jpg); width:120px; height:41px; float:left; color:#666; font-size:16px; line-height:41px; text-align:center; text-decoration:none;}
+.ds_nav a.ds_nav_hit{background:url(static/img/ds_nav_hit.jpg);}
+.ds_fenlei{ height:36px; background:#fff; color:#666; font-size:14px; text-indent:28px; line-height:36px;}
+.ds_fenlei a{ color:#666;}
+
+.ds_pubuBox{margin:10px auto; width:1196px; position:relative; padding-left:4px; }
+.ds_pubuliu{}
+
+
+.pb_border{display:block; border:1px solid #e5e5e5; width:290px;  background:#e5e5e5; margin-bottom:10px; cursor:pointer; }
+.pb_img{ }
+.pb_title{ font-size:14px; color:#333; padding:0px 16px; margin-top:5px;}
+.pb_subtitle{ font-size:12px; color:#999; padding:0 16px; margin-top:5px; line-height:20px; margin-bottom:10px;}
+.pb_account{ height:37px; background:#f0f0f0; margin-top:5px; line-height:37px; color:#504c7e;}
+.pb_eye{margin-left:10px; margin-right:5px;}
+.pb_comment{ margin-left:30px; margin-right:5px;}
+
+#pano {position:absolute;top:148px; left:722px;}
+
+.qj{background:#f0f0f0; height:430px;}
+.qjBox{width:1190px; margin:0 auto; position:relative;}
+.qjTab{ position:absolute; top:10px; left:0px;}
+.qjTab li{margin-bottom:5px; cursor:pointer;}
+
+.bigImg1{ position:absolute; left:110px; top:10px; border:6px solid #f65039;}
+.bigImg2{ position:absolute; left:110px; top:10px; border:6px solid #574d94;}
+.bigImg3{ position:absolute; left:110px; top:10px; border:6px solid #4ea9e2;}
+.bigImg4{ position:absolute; left:110px; top:10px; border:6px solid #81c74d;}
+
+
+.qjTitle{ font-size:24px; color:#333333;  position:absolute; left:750px; top:10px;}
+.qjArticle{color:#666; width:440px; height:157px; border-bottom:1px dashed #c6c6c6; position:absolute; left:750px; top:50px; line-height:24px;}
+
+.qjSpList{position:absolute; left:750px; top:221px; width:450px; height:200px; background:#f0f0f0; z-index:1;}
+.qjSpList ul{width:150px; height:200px; float:left;}
+.qjsp_title{ width:136px; margin-top:5px;}
+.qjsp_title a{ color:#515151;}
+.qjsp_price{font-size:14px; color:#ed421b;}
+.qjsp_market{font-size:12px; color:#969696; text-decoration:line-through;}
+.qjsp_img{}
+
+
+.sjTitle{width:1190px; margin:0 auto;}
+
+.articleTitle{ text-align:center; color:#2366b0; font-size:18px; margin-top:30px;}
+
+.articleContent{margin-top:30px; margin-bottom:30px; line-height:24px; font-size:14px;}
+
+.articleContent p{margin-bottom:10px;}
+

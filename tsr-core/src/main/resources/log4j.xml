@@ -46,6 +46,7 @@
     <!-- 定义 应用程序日志输出级别 -->
     <category name="com.tsr">
         <priority value="info" /> 
+        <appender-ref ref="STDOUT" />
     </category>
 
     <root>

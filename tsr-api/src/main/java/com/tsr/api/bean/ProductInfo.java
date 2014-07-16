@@ -1,9 +1,15 @@
 package com.tsr.api.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ProductInfo {
-    private Integer productId;
+public class ProductInfo implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer productId;
 
     private String productName;
 

@@ -1,0 +1,51 @@
+﻿@charset "utf-8";
+/* CSS Document */
+a{color:#3174a1; text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.ppFlash{width:1190px; margin:10px auto;}
+
+.ppzq{width:1190px; margin:0 auto;}
+.ppNav{ height:35px; background:#ececec; border-bottom:1px solid #ccc; margin-top:23px;}
+
+.ppNava{ width:1000px; margin:0 auto; padding-left:200px;}
+.ppNava a{display:block; height:35px; line-height:35px; float:left; color:#666; font-size:14px; padding:0 34px; text-decoration:none;}
+.ppNava a.ppHit{ font-size:16px; color:#333; background:#fff; border-top:2px solid #504c7e; height:33px; border-left:1px solid #ccc; border-right:1px solid #ccc; border-bottom:1px solid #fff;}
+
+.ppList{ width:1200px; margin:20px auto 0;}
+.ppList ul{ width:291px; border:1px solid #f0e9f0; padding:2px 2px 1px 1px; float:left; margin-right:5px; margin-bottom:20px;}
+.pp_logo{ text-align:center; height:58px; margin-top:5px; margin-bottom:5px;}
+.pp_logo img{ width:100px; height:50px;}
+
+.gzbtn{ width:73px; height:28px; background:#f8f8f8; border:1px solid #dedede; line-height:28px; text-align:center; color:#555; cursor:pointer; margin:10px auto;}
+.pp_desc{ height:36px; background:#f5f5f5; text-align:left; text-indent:15px; line-height:36px; color:#666; position:relative;}
+.pp_gz{position:absolute; right:5px; bottom:5px; cursor:pointer;}
+.pp_qxgz{position:absolute; right:5px; bottom:5px; cursor:pointer;}
+
+.ppflTitle{ width:1190px; margin:20px auto; height:39px; background:#f0f0f0; border-bottom:1px dotted #b3b3b3; font-size:14px; color:#666; line-height:39px; text-indent:14px; border-left:4px #c8c8c8 solid;}
+.ppflIndex{ width:1190px; margin:0 auto; font-size:"Arial"; font-size:15px; color:#999;}
+.letterDiv{ width:20px; height:20px; line-height:20px; text-align:center; cursor:pointer; display:block;}
+.letterDiv.letterHit{ background:#504c7e; color:#fff;}
+.ppflIndex a{color:#999;}
+.ppflIndex a:hover{text-decoration:none;}
+
+.ppUnit{ width:1190px; margin:0 auto;}
+.ppLetterFlag{ color:#a3a3a3; font-size:"Arial"; font-size:60px; text-indent:30px; }
+
+.ppLetterList{display:table;}
+.ppLetterList ul{ width:174px; float:left; margin-right:29px; margin-bottom:10px;}
+.ppLetterList ul li{ text-align:center; margin-bottom:10px; color:#999; font-size:15px;}
+.ppLetterList a{color:#999;}
+.ppLetterList a.letterTxtHit{color:#504c7e; text-decoration:none;}
+
+.ppLetterSlt{ width:170px; height:72px; border:1px solid #ccc; text-align:center; padding-top:13px; cursor:pointer; }
+
+.personalPage{margin-top:40px; float:right;}
+.personalPage a{ display:block; float:left; height:24px; border:1px solid #dbdbdb; line-height:24px; color:#666; padding:0 8px; margin-left:5px;}
+.personalPage a.currentPage{ border:1px solid #E22B41;}
+.personalPage a.pageNum{padding:0px; text-align:center; width:26px; }
+
+.pageline{width:1190px; margin:0 auto; display:table;}
+
+
+

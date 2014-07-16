@@ -1,9 +1,15 @@
 package com.tsr.api.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ProductCategory {
-    private Integer categoryId;
+public class ProductCategory implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer categoryId;
 
     private String categoryCode;
 

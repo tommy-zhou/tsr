@@ -14,7 +14,7 @@
     <!-- mybatis config -->
     <bean id="writerSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="writerDataSource" />
-        <property name="typeAliasesPackage" value="com.rsos.api.domain" />
+        <property name="typeAliasesPackage" value="com.tsr.api.bean" />
     </bean>
 
     <bean id="transactionManager"
@@ -23,7 +23,7 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.rsos.core.persistence.writer" />
+        <property name="basePackage" value="com.tsr.core.persistence.writer" />
         <property name="sqlSessionFactoryBeanName" value="writerSqlSessionFactory" />
     </bean>
 

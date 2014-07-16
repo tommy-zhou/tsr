@@ -1,0 +1,211 @@
+
+.leftarrow,.rightarrow {
+	cursor: pointer;
+}
+.pptmTab {
+	padding:5px;
+	border:1px solid #e2e2e2;
+	height:1898px;
+}
+.pptmTab>div{
+	overflow:auto;
+	height:100%;
+}
+.pptmTab>div>div{
+	margin-top:20px;
+	height:57px;
+}
+.pptmTab>div img {
+	width:110px;
+	height:55px;
+	border:1px solid #e2e2e2;
+}
+.pptmTab .rightDetail {
+	float:left;
+	margin-left:10px;
+	width:120px;
+}
+.pptmTab .rightDetail>div {
+	position:relative;
+}
+.pptmTab .d1{
+	top:5px;
+}
+.pptmTab .d2{
+	top:15px;
+}
+.pptmTab .d3{
+	left:70px;
+	top:-3px;
+	width:50px;
+}
+.pptmTab a:link{
+	color:#3174a1;
+	position:relative;
+}
+.pptmTab .discount{
+	width:55px;
+	height:20px;
+	line-height:20px;
+	background-color:#e82e4d;
+	text-align:center;
+	color:#ffffff;
+	border-radius:5px;
+	-moz-border-radius:5px;
+}
+.pptmtitle{
+	background-color:#f0f0f4;
+	height:40px;
+	border:1px solid #e2e2e2;
+	padding:5px;
+	margin-bottom:10px;
+}
+.pptmtitle img{
+	float:left;
+}
+.pptmtitle .topscroll img {
+	width:80px;
+	height:40px;
+}
+.pptmtitle .topscroll{
+	width:680px;
+	height:40px;
+	float:left;
+	overflow:hidden;
+}
+.pptmleft {
+	float:left;
+	width:890px;
+	margin-right:10px;
+}
+.pptmleft .list{
+	border:1px solid #e2e2e2;
+	margin-bottom:20px;
+	width:890px;
+	height:200px;
+	position:relative;
+	cursor: pointer;
+}
+.pptmleft .leftshow{
+	padding:20px 20px 0px 20px;
+	width:150px;
+	float:left;
+	margin:0 auto;
+	color:#666666;
+	font-size:14px;
+}
+.pptmleft .leftshow .rednum {
+	font-size:30px;
+	color:#e12c36;
+}
+.pptmleft .leftshow .leftlogo {
+	width:120px;
+	height:60px;
+	position:relative;
+	left:15px;
+}
+.pptmleft .leftshow .leftname {
+	margin:10px 0px;
+	text-align:center;
+}
+.pptmleft .leftshow .leftnum {
+	text-align:center;
+}
+.pptmleft .leftimg {
+	height:200px;
+	width:700px;
+}
+.pptmleft .leftcd{
+	width:890px;
+	height:30px;
+	background-color:#a4a1c9;
+	opacity:0.6;
+	filter:Alpha(opacity=50);
+	bottom:0px;
+	left:0px;
+	position:absolute;
+	color: #FFFFFF;
+    font-size: 12px;
+}
+.pptmleft .fieldtype{
+	position:relative;
+    left: 50px;
+	top:5px;
+}
+.pptmleft .colddown{
+	position:relative;
+	top: 5px;
+	*top:-10px;
+	margin-right:15px;
+	float:right;
+}
+
+.pptmleft .hover, div.hover{
+	border-color:#504c7e;
+}
+.hover .leftcd,.hover  .bottomcd{
+	background-color:#504c7e;
+	opacity:1;
+	filter:Alpha(opacity=100)
+}
+
+.pptmright {
+	width:290px;
+	float:left;	
+}
+.pptmhot {
+	float:left;
+	width:288px;
+	height:198px;
+	margin-right:10px;
+	border:1px solid #e2e2e2;
+	position:relative;
+	cursor: pointer;
+}
+.pptmhot4{
+	float:left;
+	width:288px;
+	height:198px;
+	border:1px solid #e2e2e2;
+	position:relative;
+	cursor: pointer;
+}
+.pptmhot>img{
+	width:288px;
+	height:198px;
+}
+
+.pptmbottom, .pptmbottom>div{
+	display:table;
+}
+.bottomcd{
+	width:100%;
+	background-color:#a4a1c9;
+	opacity:0.6;
+	filter:Alpha(opacity=50);
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	height:50px;
+	color: #FFFFFF;
+    font-size: 12px;
+	line-height:25px;
+}
+.pptmbottom .fieldtype,.pptmbottom .colddown{
+	position:relative;
+    left:10px;
+}
+.pptmbottom .discount{
+	width:60px;
+	background-color:#e82e4d;
+	position:relative;
+	top:-30px;
+	left:225px;
+	text-align:center;
+	color:#ffffff;
+	border-radius:5px;
+	-moz-border-radius:5px;
+}
+
+
+

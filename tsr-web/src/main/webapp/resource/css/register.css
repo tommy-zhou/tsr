@@ -1,0 +1,29 @@
+/* CSS Document */
+#login {width:1200px;margin:0 auto;height:550px;left:50%;margin-top:50px;}
+#login a {color:#3174a1;}
+#login>h2 {margin-bottom:30px;}
+.login-bg {background:url(static/img/loginBg.jpg) no-repeat left center;width:1140px;height:449px;margin-left:40px;}
+.login-box {width:394px;height:450px;background:url(static/img/loginBox.png) no-repeat 0 0;margin-left:720px;padding:80px 0px 10px 40px;}
+.login-box h2 {color:#333;font-size:24px;}
+.login-box h2 span {font-size:18px; vertical-align:text-bottom;}
+.item1,.item2,.item3,.item4 {margin-top:15px;height:29px;width:280px;position:relative; }
+i {position:absolute;background:url(static/img/icons.png) no-repeat 0 -3px;width:30px;height:24px;top:5px;left:3px;}
+.item1,.item2 {padding-left:30px;border:1px solid #c8c8c8;}
+.item2 i {background-position:-32px -3px;}
+.item1 input,.item2 input {height:20px;width:280px; margin-top:2px; border:0;}
+.item3,.item4 {width:310px;}
+.item3 input {border:1px solid #c8c8c8;height:24px;width:80px;padding-left:5px;}
+.item3 img {border:0;width:90px;height:30px;margin:0 10px;}
+.item3 * { vertical-align:middle;}
+.item4 input {margin-top:-1px; vertical-align:middle;}
+.item4 a {margin-left:138px;}
+.login-box p.register {text-align:right;margin-right:75px;margin-top:10px;padding-bottom:15px; border-bottom:1px dashed #c8c8c8;width:310px;}
+.login-box h3 {margin:10px auto; font-size:14px;}
+.login-box p.cooperate a {border:1px solid #c8c8c8;width:90px;height:22px;display:inline-block;margin-right:15px;background:url(static/img/icons.png) no-repeat 0 -24px;}
+#qq {background-position:0 -48px;}
+form[name=login] input[type=button] {border:none;background:url(static/img/icons.png) no-repeat 0 -550px;width:310px;height:50px;color:#FFF;font-size:18px; cursor:pointer;}
+
+.check{color:#ea4215; margin-top:8px; margin-bottom:-10px; height:24px;}
+
+#loginMethod { color:#dbdbdb;}
+#loginMethod a{color:#666;}

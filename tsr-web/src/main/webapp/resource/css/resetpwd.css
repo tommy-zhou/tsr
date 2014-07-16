@@ -1,0 +1,75 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*************************************************************页面全局设置************************************************************** */
+*{margin:0; padding:0; word-wrap:break-word; word-break:break-all;}
+body{font-family:"宋体"; font-size:12px;}
+img{border:0; display:inline;}
+ul,li{list-style:none;}
+.container{width:1200px; margin:0 auto;}
+input{outline:none;}
+.chkbox{vertical-align:sub; *vertical-align:middle;}
+a{color:#3174a1; text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.memberTop{height:105px; position:relative;}
+.memberLogo{position:absolute; left:9px; top:10px; background:url(static/img/member_logo.jpg) no-repeat; width:325px; height:73px; cursor:pointer;}
+.memberTel{position:absolute; left:928px; top:43px; background:url(static/img/member_tel.jpg) no-repeat; width:222px; height:26px;}
+.memberInfo{ position:absolute; right:41px; top:19px; color:#808080;}
+.memberInfo a{color:#808080; text-decoration:none;}
+.memberInfo a:hover{text-decoration:underline;}
+
+.memberBottom{font-family:"微软雅黑";}
+.bottomline{background:url(static/img/bottomline.jpg) no-repeat;  height:6px; background-position:center top; }
+.bottomInfo{width:1200px; margin:0 auto; text-align:center; color:#494949;}
+.bottomInfo a{color:#494949; text-decoration:none;}
+.bottomInfo a:hover{text-decoration:underline;}
+.fen{ margin:0 30px;}
+
+.memberFogetPwdBox{ height:790px;}
+.FP_title{ height:64px; position:relative;}
+.FP_img{ background:url(static/img/fogetTitle.jpg) no-repeat; width:147px; height:40px; position:absolute; left:4px; top:17px;}
+.FP_step{ position:relative; width:1198px; height: 100px; border:1px solid #d6d6d6;}
+.FP_step_img{ position:absolute; left:181px; top:15px;}
+.FP_content{height:416px; width:1198px; border:1px solid #d6d6d6; border-top:0; position:relative; font-size:14px; color:#333333; font-family:"微软雅黑"}
+
+.memberInput{border:#c8c8c8 1px solid; height:32px; color:#333; padding-left:9px; line-height:32px; vertical-align:middle;}
+
+.tiaokuan a{ color:#110877; text-decoration:none;}
+.tiaokuan a:hover{text-decoration:underline;}
+
+.memberBtn{ width:129px; height:26px; background:#E22B41; text-align:center; color:#fff; font-weight:bold; padding-top:9px; cursor:pointer; font-family:"微软雅黑"}
+.memberSel{ width:223px; height:24px; color:#9f9f9f; border:1px solid #c8c8c8; vertical-align:middle;}
+.yztel{color:#e16317; font-size:18px; font-weight:bold;}
+
+.continue a{ color:#184ca2; font-weight:bold; text-decoration:none;}
+.continue a:hover{text-decoration:underline;}
+
+.regContent{  height:760px; margin-top:20px;}
+.regLeft{float:left; width:580px; height:450px;  margin-right:20px;}
+.regRight{float:left; width:350px; height:180px; } 
+
+.regTabTitle{background:url(static/img/reg_tab1.jpg) no-repeat; width:392px; height:43px; position:relative; z-index:2;}
+.regTabTitle ul li{float:left; width:193px;  height:43px; cursor:pointer;}
+.regTabContent{ width:724px; height:480px; border:1px solid #d6d6d6; margin-top:-1px; position:relative; z-index:1;}
+
+.regStep{margin-left:20px; margin-top:17px; font-size:14px; font-weight:bold; font-family:"微软雅黑" ; color:#333; }
+.regStep tr{height:40px;}
+.userbd{ border:1px solid #110877; width:260px; color:#E22B41; text-align:center; padding:6px 0;}
+
+.yztr{color:#666;}
+.yztr a{color:110877; text-decoration:none;}
+.yztr a:hover{text-decoration:underline;}
+
+.su1 a{color:#E22B41; text-decoration:none;}
+.su1 a:hover{text-decoration:underline;}
+
+.su2 a{color:#110877; text-decoration:none;}
+.su2 a:hover{text-decoration:underline;}
+
+
+.loginRight{margin-left:10px; margin-top:30px; width:329px; font-size:14px; font-weight:bold; font-family:"微软雅黑" ; color:#333; }
+.loginRight tr{height:40px;}
+.alertInfo_corrent{padding:10px; border:1px solid #6cc5c9; margin:10px 0; background:#e6efef; color:#009900;}
+.alertInfo_wrong{padding:10px; border:1px solid #ff3838; margin:10px 0; background:#f8d9d9; color:#f14444;}
+i{color:#f00; font-weight:bold; font-style:normal; font-size:18px; font-family:"宋体"; margin-left:5px;}
+
