@@ -50,7 +50,7 @@ public abstract class BaseSimilarityMatrix implements SimilarityMatrix {
     public boolean isRatingCountMatrixAvailable() {
         return keepRatingCountMatrix; 
     }
-    protected abstract void calculate(Dataset dataSet);
+    //protected abstract void calculate(Dataset dataSet);
     
     public double getValue(Integer idX, Integer idY) {
         if (similarityValues == null) {

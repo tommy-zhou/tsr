@@ -10,27 +10,53 @@ import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 
 public class CustomAnalyzer extends StandardAnalyzer {
-    
-  private static final String[] ADDITIONAL_STOP_WORDS = {
-      "should", "would", "from", "up", "i", "s", "it", "his", "has", "he",
-      "she", "her", "said", "been", "being", "final", "now", "hour", "minute", "second",
-      "stop", "start", "first", "third", "fast", "slow", "large", "small"
-  };
-  
-  private static String[] MERGED_STOP_WORDS;
-  
-  static {
-      List<String> allStopWords = new ArrayList<String>(); 
-      allStopWords.addAll(Arrays.asList(StandardAnalyzer.STOP_WORDS));
-      allStopWords.addAll(Arrays.asList(ADDITIONAL_STOP_WORDS));
-      MERGED_STOP_WORDS = allStopWords.toArray(new String[0]);
-  }
-  
-  public CustomAnalyzer() {
-      super(CustomAnalyzer.MERGED_STOP_WORDS);
-  }
-  @Override
-public TokenStream tokenStream(String fieldName, Reader reader) {
-      return new PorterStemFilter(super.tokenStream(fieldName, reader));
-  }
+
+	private static final String[] ADDITIONAL_STOP_WORDS = { "家居用品", "家纺床品",
+			"床上套件类", "被子","毯类", "床垫","床褥", "枕头类", "蚊帐凉席", "毛巾","浴巾、浴袍类", "居家鞋","拖鞋",
+			"居家布艺", "桌布","套件", "沙发垫套", "抱枕坐垫", "布艺收纳类", "地毯","地垫", "厨房","生活",
+			"锅具", "餐具","茶具类", "保鲜盒","储物罐类", "保温杯","壶类", "水具酒具类", "收纳架",
+			"清洁用品", "香薰","精油类", "卫浴","晾晒", "厨房电器", "电饭煲","电压力锅", "豆浆机","榨汁机","搅拌机",
+			"电磁炉","电饼铛", "面包机","多士炉", "微波炉","电烤箱", "电水壶","热水瓶", "煮蛋器","酸奶机", "电炖锅","电火锅",
+			"生活电器", "电熨斗","挂烫机", "吸尘器", "净化器","加湿器", "取暖","纳凉电器", "清洁机", "其它",
+			"个人护理电器", "剃须刀", "剃","脱毛器", "电吹风", "口腔护理", "美容","美发器", "足浴盆", "按摩器",
+			"家居饰品","相框", "装饰画", "相片墙", "相框", "家居壁饰", "挂饰","壁饰", "装饰架","挂钩",
+			"家居摆件", "装饰摆件", "雕刻工艺", "果盘","果篓", "家居钟饰", "挂钟", "桌钟","闹钟", "花艺","花器",
+			"仿真花卉", "花瓶","花器", "家居灯饰", "装饰灯", "学习","照明灯", "光源", "家具", "实木床",
+			"皮艺床", "布艺床", "板式床", "柜类", "电视柜", "衣柜","衣帽间", "床头柜", "书柜", "餐边柜",
+			"斗柜", "鞋柜", "酒柜", "装饰柜", "间厅柜", "几类", "茶几", "角几","边几", "儿童", "儿童床",
+			"儿童床垫", "儿童学习桌","书桌", "儿童柜", "儿童玩具", "儿童套房组合", "床垫", "乳胶床垫", "棕床垫",
+			"记忆棉床垫", "弹簧床垫", "普通床垫", "枕头靠垫", "沙发", "皮沙发", "布沙发", "皮布结合",
+			"功能沙发", "沙发床", "实木沙发", "按摩椅", "懒人沙发", "办公户外", "文件柜", "电脑桌",
+			"办公桌", "书柜", "老板桌","会议桌", "屏风隔断", "编藤桌椅", "便携式桌椅", 
+			"餐桌","椅子", "书桌","椅子", "梳妆台","凳", "椅子", "凳子", "电脑桌", "红木", "红木", "藤器",
+			"藤器", "家具饰品", "挂画", "摆件", "花艺", "其他", "水族馆", "健身器材", "音响", "建材",
+			"卫浴五金", "浴巾架", "浴室镜", "厕纸架", "毛巾杆", "置物架", "地漏", "挂钩","连体马桶","马桶", "马桶刷", "角阀",
+			"软管", "套件", "配件", "卫浴洁具", "座厕", "蹲厕", "面盆", "柱盆", "水龙头", "淋浴花洒",
+			"浴室柜", "智能座盖", "浴缸", "淋浴房", "其他", "电工电料", "开关", "插座", "电源线",
+			"线路保护器", "配电箱", "其他防盗制品", "锁具五金", "锁具", "拉手", "合页", "门吸", "铰链",
+			"猫眼", "插销", "滑轨", "吊轮", "吊轨", "其他", "晾衣架", "厨房", "水槽", "净水", "龙头",
+			"五金配件", "瓷砖", "地砖", "墙砖", "马赛克", "腰线", "窗帘布艺", "窗帘", "地板", "实木地板",
+			"强化地板", "软木地板", "竹地板", "仿古手工地板", "实木多层地板", "门类", "实木门", "实木复合门",
+			"模压门", "安全门", "防盗门", "楼梯", "楼梯", "移门衣柜", "移门衣柜", "门窗", "门窗",
+			"墙地面装饰材料", "墙纸", "硅藻泥", "油漆涂料", "灯具", "商照", "民用", "玻璃", "艺术玻璃",
+			"橱柜", "橱柜", "吊顶", "吊顶", "水暖", "暖通", "水管", "太阳能", "电器", "厨卫电器",
+			"白色家电", "热水器", "榨汁机", "豆浆机", "装饰镜" };
+
+	private static String[] MERGED_STOP_WORDS;
+
+	static {
+		List<String> allStopWords = new ArrayList<String>();
+		allStopWords.addAll(Arrays.asList(StandardAnalyzer.STOP_WORDS));
+		allStopWords.addAll(Arrays.asList(ADDITIONAL_STOP_WORDS));
+		MERGED_STOP_WORDS = allStopWords.toArray(new String[0]);
+	}
+
+	public CustomAnalyzer() {
+		super(CustomAnalyzer.MERGED_STOP_WORDS);
+	}
+
+	@Override
+	public TokenStream tokenStream(String fieldName, Reader reader) {
+		return new PorterStemFilter(super.tokenStream(fieldName, reader));
+	}
 }

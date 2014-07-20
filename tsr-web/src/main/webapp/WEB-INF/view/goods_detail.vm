@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>商品详细</title>
+<title>$!{productGoods.pdtName}</title>
 <meta content="红星家品会,hxshop,打折,品牌折扣,限时抢购,特卖" name="keywords">
 <meta content="红星家品会，品牌家居特卖网。红星家品会商品囊括家居、家具、建材等上千品牌。100%正品、低价、7天无条件退货。" name="description">
 <link media="screen" href="../resource/css/frame.css" rel="stylesheet" type="text/css">
@@ -15,6 +15,11 @@
 <script src="../resource/js/jquery.jqzoom-core.js" type="text/javascript"></script>
 <link rel="stylesheet" href="../resource/css/jquery.jqzoom.css" type="text/css">
 
+ <style type="text/css">
+    .xqList3{ width: 732px; overflow: hidden;}
+.xqList3 ul{width:230px; padding-top:20px; height:120px;  float:left;}
+    </style>
+    
 <script>
 $(function(){
 	
@@ -284,7 +289,7 @@ $(document).ready(function() {
 <div class="current">
 	<div class="currentNav">
     	
-    	<a href="index.html">首页</a> > <a href="">家具</a> > <a href="">书房</a> > 书柜/书架
+    	<a href="index.html">首页</a> > <a href="">$!{productGoods.firstClassName}</a> > <a href="">$!{productGoods.secondClassName}</a> > $!{productGoods.thirdClassName}
     </div>
 </div>
 <div class="goodsChoose">
@@ -293,7 +298,7 @@ $(document).ready(function() {
   	
     <td width="456" valign="top">
     	<!--中部大图-->
-        <div class="goodsImg"><span class="goodsState3" style="z-index:100;"></span><a href="../resource/img/triumph_big1.jpg" class="jqzoom" rel='gal1'  title="triumph" ><img src="../resource/img/g_big.jpg" width="430" height="430" /></a></div><!--三种状态 分别是goodsState1 goodsState2 goodsState3-->
+        <div class="goodsImg"><span class="goodsState3" style="z-index:100;"></span><a href="http://pic03.hxshopimg.com/$!{productGoods.goodsImgUrl}" class="jqzoom" rel='gal1'  title="triumph" ><img src="http://pic03.hxshopimg.com/$!{productGoods.goodsImgUrl}.428x428.jpg" width="430" height="430" /></a></div><!--三种状态 分别是goodsState1 goodsState2 goodsState3-->
         
         <!--
         <div class="share">分享到：<a title="分享到新浪微博" href="http://service.weibo.com/share/share.php?title=乌拉拉&url=http://www.baidu.com&source=bookmark&appkey=2992571369&pic=&ralateUid=&sudaref=s.jiathis.com" target="_blank" ><img src="../resource/img/share1.jpg" /></a> <a title="分享到QQ空间" target="_blank" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fwww.jiathis.com%2Fshare&title=%E5%88%86%E4%BA%AB%E5%88%B0%E5%90%84%E5%A4%A7%E7%A4%BE%E4%BC%9A%E5%8C%96%E7%BD%91%E7%BB%9C+-+%E5%8A%A0%E7%BD%91&pics=&summary="><img src="../resource/img/share2.jpg" /></a> <a title="分享到腾讯微博" href="http://share.v.t.qq.com/index.php?c=share&a=index&title=%E5%88%86%E4%BA%AB%E5%88%B0%E5%90%84%E5%A4%A7%E7%A4%BE%E4%BC%9A%E5%8C%96%E7%BD%91%E7%BB%9C+-+%E5%8A%A0%E7%BD%91%20&url=http%3A%2F%2Fwww.jiathis.com%2Fshare&appkey=118cd1d635c44eab9a4840b2fbf8b0fb&site=www.jiathis.com&pic=" target="_blank"><img src="../resource/img/share3.jpg" /></a> </div>
@@ -305,13 +310,12 @@ $(document).ready(function() {
         	<div class="up"><img src="../resource/img/detailLeft.jpg" /></div>
             <div class="goodsBar">
                 <ul>
-                    <li class="sltHit"><img src="../resource/img/g_slt1.jpg" /></li>
-                    <li><img src="../resource/img/g_slt1.jpg" /></li>
-                    <li><img src="../resource/img/g_slt1.jpg" /></li>
-                    <li><img src="../resource/img/g_slt1.jpg" /></li>
-                    <li><img src="../resource/img/g_slt1.jpg" /></li>
-                    <li><img src="../resource/img/g_slt1.jpg" /></li>
-                    <li><img src="../resource/img/g_slt1.jpg" /></li>
+                    <li><img src="http://pic03.hxshopimg.com/$!{productGoods.goodsImgUrl}.88x88.jpg" /></li>
+                    <li><img src="http://pic03.hxshopimg.com/$!{productGoods.goodsImgUrl}.88x88.jpg" /></li>
+                    <li><img src="http://pic03.hxshopimg.com/$!{productGoods.goodsImgUrl}.88x88.jpg" /></li>
+                    <li><img src="http://pic03.hxshopimg.com/$!{productGoods.goodsImgUrl}.88x88.jpg" /></li>
+                    <li><img src="http://pic03.hxshopimg.com/$!{productGoods.goodsImgUrl}.88x88.jpg" /></li>
+                    <li><img src="http://pic03.hxshopimg.com/$!{productGoods.goodsImgUrl}.88x88.jpg" /></li>
                 </ul>
             </div>
             <div class="down"><img src="../resource/img/detailRight.jpg" /></div>
@@ -348,57 +352,21 @@ $(document).ready(function() {
     <td valign="top">
     	<div style="position:relative; ">
     	<!--右部商品信息-->
-        <div class="goods_title" title="[彼岸阳光]  地中海风格 进口实木书柜[彼岸阳光]  地中海风格 进口实木书柜">[彼岸阳光]  地中海风格 进口实木书柜[彼岸阳光]  地中海风格 进口实木书柜</div>
+        <div class="goods_title" title="【 $!{productGoods.brandName}】 $!{productGoods.pdtName}">【 $!{productGoods.brandName}】 $!{productGoods.pdtName}</div>
         
-        <div class="goods_subtitle">小户型家庭首选产品！设计合理，占用空间小！精选优质实木材质!</div>
+        <div class="goods_subtitle">$!{productGoods.pdtDname}</div>
         
         <div class="dotted" ></div>
         
-        <div class="goods_no">商品编号：741098</div>
+        <div class="goods_no">商品编号： $!{productGoods.pdtCode}</div>
         
         
         
-        <div class="goods_price" style="margin-top:2px;">促<span style="margin-left:6px;"></span>销<span style="margin-left:6px;"></span>价：<span class="g_p1">¥</span> <span class="g_p2">349.00</span> <input type="button" disabled="disabled" value="3.5折" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> <img src="../resource/img/djs.jpg" style="margin-left:10px;" /> 剩余<span class="c3">06</span>天<span class="c3">12</span>小时<span class="c3">45</span>分<span class="c3">10</span>秒</div>
-        <div class="goods_price">原<span style="margin-left:6px;"></span>价<span style="margin-left:6px;"></span>格：<span class="price_del">¥1099.00</span></div>
+        <div class="goods_price" style="margin-top:2px;">促<span style="margin-left:6px;"></span>销<span style="margin-left:6px;"></span>价：<span class="g_p1">¥</span> <span class="g_p2">#moneyFormat($!{productGoods.referencePrice})</span><!-- <input type="button" disabled="disabled" value="3.5折" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> --> </div>
+        <div class="goods_price">原<span style="margin-left:6px;"></span>价<span style="margin-left:6px;"></span>格：<span class="price_del">¥#moneyFormat($!{productGoods.marketPrice})</span></div>
         
         <div class="goods_support">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-           <tr>
-            <td width="64" style="vertical-align:top;">促销信息：</td>
-            <td style="vertical-align:top; "> 
-            	<div style="color:#c00; overflow:hidden; line-height:22px; "><input type="button" disabled="disabled" value="折扣" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 整单9折优惠</div>
-                <div class="opencontent0" style="display:none; padding-bottom:10px;color:#c00;">
-                    <div style="margin-top:10px;"><input type="button" disabled="disabled" value="满减" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满99.0减20.0，满159.0减30.0</div>
-                    <div style="margin-top:10px;"><input type="button" disabled="disabled" value="满赠" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满99.0赠20.0，满159.0赠30.0</div>
-                </div>
-            </td>
-            <td width="100" style="vertical-align:top;"><span class="open0" style="cursor:pointer;color:#4f467c">展开更多∨</span></td>
-          </tr>
-
-           <tr>
-            <td width="64"></td>
-            <td style="vertical-align:top;"> 
-            	<div style="color:#c00;line-height:22px;"><input type="button" disabled="disabled" value="折扣" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满100减20</div>
-                <div class="opencontent1" style="display:none; color:#c00;line-height:22px;padding-bottom:10px">
-                    <div style="margin-top:10px;"><input type="button" disabled="disabled" value="满减" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满99.0减20.0，满159.0减30.0</div>
-                    <div style="margin-top:10px;"><input type="button" disabled="disabled" value="满赠" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满99.0赠20.0，满159.0赠30.0</div>
-                </div>
-            </td>
-            <td width="100" style="vertical-align:top;"><span class="open1" style="cursor:pointer;color:#4f467c">展开更多∨</span></td>
-          </tr>
-
-           <tr>
-            <td width="64"></td>
-            <td style="vertical-align:top;"> 
-            	<div style="color:#c00;"><input type="button" disabled="disabled" value="折扣" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 整单9折优惠</div>
-                <div class="opencontent2" style="display:none; color:#c00;padding-bottom: 10px;">
-                    <div style="margin-top:10px;"><input type="button" disabled="disabled" value="满减" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满99.0减20.0，满159.0减30.0</div>
-                    <div style="margin-top:10px;"><input type="button" disabled="disabled" value="满赠" style="width:38px; height:18px; border:0; background:#c00; color:#fff; font-size:12px; margin-top:-3px;" /> 满99.0赠20.0，满159.0赠30.0</div>
-                </div>
-            </td>
-            <td width="100" style="vertical-align:top;"><span class="open2" style="cursor:pointer;color:#4f467c">展开更多∨</span></td>
-          </tr>
-          
           <tr style="height:35px;">
           	<td colspan="2" valign="middle" >发<span style="margin-left:6px;"></span>送<span style="margin-left:6px;"></span>至： <input type="button" class="citybox" value="请选择..." /> <select style="width:98px;"><option>浦陀区</option></select> <!--<input class="btn2" type="button" value="运费说明" />-->
             	<div style="position:relative; *z-index:10;">
@@ -450,11 +418,11 @@ $(document).ready(function() {
           <tr style="height:45px;">
             <td width="64" style="padding-top:5px;">颜<span class="space1"></span>色：</td>
             <!--<td style="padding-top:15px;"><ul class="colorChoose"><li class="colorHit"><img src="../resource/img/color/color1.jpg" width="55" height="25" /></li><li><img src="../resource/img/color/color2.jpg" /></li><li><img src="../resource/img/color/color3.jpg" /></li></ul></td>-->
-            <td style="padding-top:15px;"><ul class="colorChoose"><li class="colorHit">黄色</li><li>浅黄色</li><li>深黄色</li></ul></td>
+            <td style="padding-top:15px;"><ul class="colorChoose"><li class="colorHit"> $!{productGoods.color}</li></ul></td>
           </tr>
           <tr style="height:45px;">
             <td>尺<span class="space1"></span>码：</td>
-            <td style="padding-top:10px;"><ul class="sizeChoose"><li>XS</li><li>S</li><li class="sizeHit">M</li><li>L</li></ul></td>
+            <td style="padding-top:10px;"><ul class="sizeChoose"><li> $!{productGoods.size}</li></ul></td>
           </tr>
           <tr style="height:45px;">
             <td>购买数量：</td>
@@ -475,7 +443,16 @@ $(document).ready(function() {
             <div class="tskgw" style="position:absolute; left:130px; top:61px; width:109px; height:34px; cursor:pointer;"></div><!--继续购物-->
             <img src="../resource/img/addok.jpg" />
         </div>
-        
+        <div id="glist" class="xqList3" style="display:block;">
+        			#foreach($goods in $recommendGoods)
+	        			<ul>
+	                        <li class="xqImg" ><a href="/tsr-web/goods/$!{goods.productGoodsId}.htm"><img src='http://pic03.hxshopimg.com/$!{goods.goodsImgUrl}.100x100.jpg' width="100" height="100" title="$!{goods.pdtName}"/></a></li>
+	                        <li class="xqDesc"><a href="/tsr-web/goods/$!{goods.productGoodsId}.htm" title="$!{goods.pdtName}">$!{goods.pdtName}</a></li>
+	                        <li class="xqPrice">￥#moneyFormat($!{productGoods.referencePrice})</li>
+	                        <li class="xqMarket">￥#moneyFormat($!{productGoods.marketPrice})</li>
+	                    </ul>
+        			#end
+                  </div>  
         </div>
     </td>
   </tr>

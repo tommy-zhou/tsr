@@ -18,7 +18,7 @@ public class ItemBasedSimilarity extends BaseSimilarityMatrix {
         calculate(dataSet);
     }
 
-    @Override
+    //@Override
 	protected void calculate(Dataset dataSet) {
   
         int nItems = dataSet.getItemCount();

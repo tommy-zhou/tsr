@@ -1,0 +1,13 @@
+<div style="float:left;margin-bottom:9px;">共<span id="countRecord"></span>条纪录，当前第<span id="currentPage"></span>/<span id="countPage"></span>页，每页显示
+      <select id="onePageCount" class="span1" style="margin-right:5px;" onchange="javascript:CommonUtil.gotoAjaxPage('$formName', 1)">
+          <option value="10" >10行</option>
+          <option value="20" >20行</option>
+          <option value="50" >50行</option>
+      </select>行。
+</div>
+<div class="pagination pagination-right" style="float:right;">
+ ## <div class="jump"><span>跳转至第</span><input type="text" id="appendedInputButton" class="span1"><span>页</span><i><a href="javascript:CommonUtil.gotoAjaxPageIn('$formName', 'appendedInputButton')" onclick="javascript:CommonUtil.gotoAjaxPageIn('$formName', 'appendedInputButton')">GO!</a></i></div>
+  <div class="jump"><span>跳转至第</span><input type="text" id="appendedInputButton" class="span1"><span>页</span><i><a href="javascript:CommonUtil.gotoAjaxPageIn('$formName', 'appendedInputButton')">GO!</a></i></div>
+  <ul id="pageList" style="float:right;">
+  </ul>
+</div>

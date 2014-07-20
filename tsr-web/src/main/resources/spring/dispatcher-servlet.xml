@@ -61,7 +61,7 @@
 			<props>
 				<prop key="input.encoding">UTF-8</prop>
 				<prop key="output.encoding">UTF-8</prop>
-				<prop key="velocimacro.library">comm/macros.vm</prop>
+				<prop key="velocimacro.library">common/macros.vm</prop>
 			</props>
 		</property>
 	</bean>

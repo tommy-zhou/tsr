@@ -28,7 +28,7 @@ public class ImprovedUserBasedSimilarity extends BaseSimilarityMatrix {
     // - start with 1
     // - have no gaps in sequence.
     // Otherwise we would have to have a mapping from userId/bookId into index
-    @Override
+    //@Override
 	protected void calculate(Dataset dataSet) {
 
         int nUsers = dataSet.getUserCount();

@@ -23,7 +23,7 @@ public class ItemPenaltyBasedSimilarity extends BaseSimilarityMatrix {
         calculate(dataSet);
     }
     
-    @Override
+    //@Override
 	protected void calculate(Dataset dataSet) {
 
         int nItems = dataSet.getItemCount();

@@ -976,4 +976,250 @@
       element_cnt = #{elementCnt,jdbcType=INTEGER}
     where product_goods_id = #{productGoodsId,jdbcType=INTEGER}
   </update>
+  
+   <select id="selectList" resultMap="BaseResultMap" parameterType="com.tsr.api.bean.ProductGoods"  >
+    select 
+    <include refid="Base_Column_List" />
+    from product_goods
+    <where>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=INTEGER}
+      </if>
+      <if test="pdtCode != null" >
+        and pdt_code = #{pdtCode,jdbcType=VARCHAR}
+      </if>
+      <if test="pdtModel != null" >
+        and pdt_model = #{pdtModel,jdbcType=VARCHAR}
+      </if>
+      <if test="pdtName != null" >
+        and pdt_name = #{pdtName,jdbcType=VARCHAR}
+      </if>
+      <if test="pdtDname != null" >
+        and pdt_dname = #{pdtDname,jdbcType=VARCHAR}
+      </if>
+      <if test="pdtEname != null" >
+        and pdt_ename = #{pdtEname,jdbcType=VARCHAR}
+      </if>
+      <if test="supplierId != null" >
+        and supplier_id = #{supplierId,jdbcType=INTEGER}
+      </if>
+      <if test="supplierName != null" >
+        and supplier_name = #{supplierName,jdbcType=VARCHAR}
+      </if>
+      <if test="brandId != null" >
+        and brand_id = #{brandId,jdbcType=VARCHAR}
+      </if>
+      <if test="brandName != null" >
+        and brand_name = #{brandName,jdbcType=VARCHAR}
+      </if>
+      <if test="categoryId != null" >
+        and category_id = #{categoryId,jdbcType=INTEGER}
+      </if>
+      <if test="firstClass != null" >
+        and first_class = #{firstClass,jdbcType=VARCHAR}
+      </if>
+      <if test="thirdClass != null" >
+        and third_class = #{thirdClass,jdbcType=VARCHAR}
+      </if>
+      <if test="secondClass != null" >
+        and second_class = #{secondClass,jdbcType=VARCHAR}
+      </if>
+      <if test="barcode != null" >
+        and barcode = #{barcode,jdbcType=VARCHAR}
+      </if>
+      <if test="manufatureCode != null" >
+        and manufature_code = #{manufatureCode,jdbcType=VARCHAR}
+      </if>
+      <if test="boxCode != null" >
+        and box_code = #{boxCode,jdbcType=VARCHAR}
+      </if>
+      <if test="color != null" >
+       and  color = #{color,jdbcType=VARCHAR}
+      </if>
+      <if test="size != null" >
+        and size = #{size,jdbcType=VARCHAR}
+      </if>
+      <if test="texture != null" >
+        and texture = #{texture,jdbcType=VARCHAR}
+      </if>
+      <if test="style != null" >
+        and style = #{style,jdbcType=VARCHAR}
+      </if>
+      <if test="origin != null" >
+        and origin = #{origin,jdbcType=VARCHAR}
+      </if>
+      <if test="packageStyle != null" >
+        and package_style = #{packageStyle,jdbcType=VARCHAR}
+      </if>
+      <if test="taxRate != null" >
+        and tax_rate = #{taxRate,jdbcType=DECIMAL}
+      </if>
+      <if test="unitId != null" >
+       and  unit_id = #{unitId,jdbcType=VARCHAR}
+      </if>
+      <if test="length != null" >
+        and length = #{length,jdbcType=DECIMAL}
+      </if>
+      <if test="width != null" >
+        and width = #{width,jdbcType=DECIMAL}
+      </if>
+      <if test="height != null" >
+        and height = #{height,jdbcType=DECIMAL}
+      </if>
+      <if test="volume != null" >
+        and volume = #{volume,jdbcType=DECIMAL}
+      </if>
+      <if test="weight != null" >
+        and weight = #{weight,jdbcType=DECIMAL}
+      </if>
+      <if test="pLength != null" >
+       and  p_length = #{pLength,jdbcType=DECIMAL}
+      </if>
+      <if test="pWidth != null" >
+        and p_width = #{pWidth,jdbcType=DECIMAL}
+      </if>
+      <if test="pHeight != null" >
+        and p_height = #{pHeight,jdbcType=DECIMAL}
+      </if>
+      <if test="pVolume != null" >
+        and p_volume = #{pVolume,jdbcType=DECIMAL}
+      </if>
+      <if test="pWeight != null" >
+        and p_weight = #{pWeight,jdbcType=DECIMAL}
+      </if>
+      <if test="pqty != null" >
+        and pqty = #{pqty,jdbcType=INTEGER}
+      </if>
+      <if test="breakable != null" >
+       and  breakable = #{breakable,jdbcType=VARCHAR}
+      </if>
+      <if test="washable != null" >
+       and  washable = #{washable,jdbcType=VARCHAR}
+      </if>
+      <if test="coverable != null" >
+        and coverable = #{coverable,jdbcType=VARCHAR}
+      </if>
+      <if test="saleRegion != null" >
+       and  sale_region = #{saleRegion,jdbcType=INTEGER}
+      </if>
+      <if test="durationPeriod != null" >
+        and duration_period = #{durationPeriod,jdbcType=VARCHAR}
+      </if>
+      <if test="shipPeriod != null" >
+        and ship_period = #{shipPeriod,jdbcType=VARCHAR}
+      </if>
+      <if test="customCycle != null" >
+       and  custom_cycle = #{customCycle,jdbcType=VARCHAR}
+      </if>
+      <if test="maintainDesc != null" >
+        and maintain_desc = #{maintainDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="unpacking != null" >
+        and unpacking = #{unpacking,jdbcType=VARCHAR}
+      </if>
+      <if test="minOrderAmount != null" >
+        and min_order_amount = #{minOrderAmount,jdbcType=VARCHAR}
+      </if>
+      <if test="maxBearing != null" >
+        and max_bearing = #{maxBearing,jdbcType=VARCHAR}
+      </if>
+      <if test="expressDelivery != null" >
+        and express_delivery = #{expressDelivery,jdbcType=VARCHAR}
+      </if>
+      <if test="marketPrice != null" >
+        and market_price = #{marketPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="minSalePrice != null" >
+       and  min_sale_price = #{minSalePrice,jdbcType=DECIMAL}
+      </if>
+      <if test="referenceCost != null" >
+        and reference_cost = #{referenceCost,jdbcType=DECIMAL}
+      </if>
+      <if test="referencePrice != null" >
+        and reference_price = #{referencePrice,jdbcType=DECIMAL}
+      </if>
+      <if test="specialPrice != null" >
+       and  special_price = #{specialPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="specialFromDate != null" >
+        and special_from_date = #{specialFromDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="specialToDate != null" >
+       and  special_to_date = #{specialToDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="handleType != null" >
+        and handle_type = #{handleType,jdbcType=TINYINT}
+      </if>
+      <if test="handleSupplierId != null" >
+        and handle_supplier_id = #{handleSupplierId,jdbcType=VARCHAR}
+      </if>
+      <if test="saleStatus != null" >
+        and sale_status = #{saleStatus,jdbcType=TINYINT}
+      </if>
+      <if test="onsaleStartDatetime != null" >
+        and onsale_start_datetime = #{onsaleStartDatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="onsaleEndDatetime != null" >
+        and onsale_end_datetime = #{onsaleEndDatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isDelete != null" >
+        and is_delete = #{isDelete,jdbcType=TINYINT}
+      </if>
+      <if test="memo != null" >
+        and memo = #{memo,jdbcType=VARCHAR}
+      </if>
+      <if test="synStatus != null" >
+        and syn_status = #{synStatus,jdbcType=TINYINT}
+      </if>
+      <if test="roomType != null" >
+        and room_type = #{roomType,jdbcType=VARCHAR}
+      </if>
+      <if test="isVisable != null" >
+        and is_visable = #{isVisable,jdbcType=TINYINT}
+      </if>
+      <if test="isPoints != null" >
+        and is_points = #{isPoints,jdbcType=TINYINT}
+      </if>
+      <if test="pointsCost != null" >
+        and points_cost = #{pointsCost,jdbcType=INTEGER}
+      </if>
+      <if test="isInStock != null" >
+        and is_in_stock = #{isInStock,jdbcType=INTEGER}
+      </if>
+      <if test="publishStatus != null" >
+        and publish_status = #{publishStatus,jdbcType=TINYINT}
+      </if>
+      <if test="goodsImgUrl != null" >
+        and goods_img_url = #{goodsImgUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="purchaseName != null" >
+        and purchase_name = #{purchaseName,jdbcType=VARCHAR}
+      </if>
+      <if test="salesCount != null" >
+        and sales_count = #{salesCount,jdbcType=INTEGER}
+      </if>
+      <if test="createDatetime != null" >
+        and create_datetime = #{createDatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createOperator != null" >
+        and create_operator = #{createOperator,jdbcType=VARCHAR}
+      </if>
+      <if test="updateDatetime != null" >
+        and update_datetime = #{updateDatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateOperator != null" >
+        and update_operator = #{updateOperator,jdbcType=VARCHAR}
+      </if>
+      <if test="namePrefix != null" >
+        and name_prefix = #{namePrefix,jdbcType=VARCHAR}
+      </if>
+      <if test="nameSuffix != null" >
+       and  name_suffix = #{nameSuffix,jdbcType=VARCHAR}
+      </if>
+      <if test="elementCnt != null" >
+        and element_cnt = #{elementCnt,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  
 </mapper>

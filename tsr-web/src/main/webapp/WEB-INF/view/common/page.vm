@@ -1,0 +1,47 @@
+<div style="float:left;margin-bottom:9px;display:none;" >
+    <input id="onePageCount" type="hidden" style="display:none;" value="$page.getOnePageCount()"/>
+</div>
+#if($page.getCountPage() > 0)
+    <a href="#" onclick="javascript:CommonUtil.gotoPage('$formName', 1)"><<首页</a>
+    <a href="#" onclick="javascript:CommonUtil.gotoPage('$formName', $page.getCurrentPage()-1)">上一页</a>
+        #set($pageCount = 5)
+           #set($endPage = $page.getCurrentPage() + 2)
+           #if($page.getCurrentPage() > 2)
+                #if($endPage > $page.getPageIndex().getEndIndex())
+                    #set($endPage = $page.getPageIndex().getEndIndex())
+                    #set($startpage = $endPage - 4)
+                    #if($startpage < 0)
+                        #set($startpage = 1)
+                    #end
+                #else
+                    #set($startpage = $endPage - 4)
+                    #if($startpage < 0)
+                        #set($startpage = 1)
+                    #end
+                #end
+                #foreach($item in [$startpage..$endPage])   
+                    #if($item != 0 && $item == $page.getCurrentPage())
+                        <a href="#" class="currentPage pageNum">$item</a>
+                    #elseif($item != 0)
+                        <a href="#" class="pageNum" onclick="javascript:CommonUtil.gotoPage('$formName', $item)" >$item</a>
+                    #end
+                #end
+           #else
+                #if($pageCount > $page.getPageIndex().getEndIndex())
+                    #set($currentCount = $page.getPageIndex().getEndIndex())
+                #else
+                    #set($currentCount = $pageCount)
+                #end
+                #foreach($item in [1..$currentCount])   
+                    #if($item != 0 && $item == $page.getCurrentPage())
+                        <a href="#" class="currentPage pageNum">$item</a>
+                    #elseif($item != 0)
+                        <a href="#" class="pageNum" onclick="javascript:CommonUtil.gotoPage('$formName', $item)" >$item</a>
+                    #end
+                #end
+           #end
+    <a href="#" onclick="javascript:CommonUtil.gotoPage('$formName', $page.getCurrentPage()+1)">下一页</a>
+    <a href="#" onclick="javascript:CommonUtil.gotoPage('$formName', $page.getCountPage())">尾页>></a>
+    <a href="javascript:void(0)" style="cursor:default;width:80px; padding:0; text-align:center;">$page.getCurrentPage()/共$page.getCountPage()页</a>
+    </a>
+#end

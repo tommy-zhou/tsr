@@ -1,0 +1,49 @@
+## formName 表单名 ajax分页
+#macro(ajaxpage $formName)
+#parse("/commmon/ajaxpage.vm")
+#end
+## formName 表单名
+#macro(page $formName)
+#parse("/commmon/page.vm")
+#end
+## show error 
+#macro(getErrorMessage $field)
+    #if($result)
+		#if($result.getFieldError($field))
+			$result.getFieldError($field).getDefaultMessage()
+		#end
+	#end
+#end
+## get static source path
+#macro(resourceUrl $path)##
+$!staticSourcePathUtil.sourceUrl($!path)##
+#end##
+## get searcher url##
+#macro(searcherUrl $action)##
+$staticSourcePathUtil.searcherUrl($action)##
+#end##
+## 格式化金钱,四舍五入，两位小数。千位逗号分隔。##
+#macro(moneyFormat $money)##
+$amountUtil.format($money)##
+#end##
+## 格式化数字,四舍五入，两位小数。
+#macro(numFormat $num)##
+$amountUtil.numFormat($num)##
+#end##
+## 数字化金钱
+#macro(doubleMoney $money)
+$amountUtil.foramtDouble($money)##
+#end##
+#macro(imgFormat $imgPath,$width,$height)##
+$staticSourcePathUtil.imgFormat($imgPath,$width,$height)##
+#end##
+#macro(imgUrlFormat $imgPath,$width,$height,$index)##
+$staticSourcePathUtil.imgUrlFormat($imgPath,$width,$height,$index)##
+#end##
+## 获取 js ,css  version
+#macro( ver )##
+$staticSourcePathUtil.getJsAndCssVersion()##
+#end##
+#macro( jsCssUrl $url)##
+$staticSourcePathUtil.getJsAndCssUrl($url)##
+#end##

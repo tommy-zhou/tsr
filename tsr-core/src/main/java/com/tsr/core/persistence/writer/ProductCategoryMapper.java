@@ -10,6 +10,8 @@ public interface ProductCategoryMapper {
     int insertSelective(ProductCategory record);
 
     ProductCategory selectByPrimaryKey(Integer categoryId);
+    
+    ProductCategory selectByCategoryCode(String categoryCode);
 
     int updateByPrimaryKeySelective(ProductCategory record);
 

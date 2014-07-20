@@ -1,5 +1,7 @@
 package com.tsr.core.persistence.writer;
 
+import java.util.List;
+
 import com.tsr.api.bean.ProductGoods;
 
 public interface ProductGoodsMapper {
@@ -14,4 +16,6 @@ public interface ProductGoodsMapper {
     int updateByPrimaryKeySelective(ProductGoods record);
 
     int updateByPrimaryKey(ProductGoods record);
+    
+    List<ProductGoods> selectList(ProductGoods record);
 }

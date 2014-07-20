@@ -11,9 +11,9 @@ public class SimilarityMatrixRepository {
     public SimilarityMatrixRepository(boolean useCache) {
         if( useCache ) {
 //            String appTempDir = IWeb2Config.getProperty(IWeb2Config.TEMP_DIR);
-//            File cacheDir = 
-//                new File(appTempDir, "ch3/collaborative/SimilarityCache");
-        	File cacheDir = null;
+            File cacheDir = 
+                new File("/data/", "SimilarityCache");
+        	//File cacheDir = null;
             cache = new SimilarityMatrixCache(cacheDir);
         }
         else {

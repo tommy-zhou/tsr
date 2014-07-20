@@ -39,6 +39,12 @@ public class ProductGoods implements Serializable {
     private String thirdClass;
 
     private String secondClass;
+    
+    private String firstClassName;
+
+    private String thirdClassName;
+
+    private String secondClassName;
 
     private String barcode;
 
@@ -169,6 +175,8 @@ public class ProductGoods implements Serializable {
     private String nameSuffix;
 
     private Integer elementCnt;
+    
+    private ProductInfo productInfo;
 
     public Integer getProductGoodsId() {
         return productGoodsId;
@@ -809,4 +817,36 @@ public class ProductGoods implements Serializable {
     public void setElementCnt(Integer elementCnt) {
         this.elementCnt = elementCnt;
     }
+
+	public String getFirstClassName() {
+		return firstClassName;
+	}
+
+	public void setFirstClassName(String firstClassName) {
+		this.firstClassName = firstClassName;
+	}
+
+	public String getThirdClassName() {
+		return thirdClassName;
+	}
+
+	public void setThirdClassName(String thirdClassName) {
+		this.thirdClassName = thirdClassName;
+	}
+
+	public String getSecondClassName() {
+		return secondClassName;
+	}
+
+	public void setSecondClassName(String secondClassName) {
+		this.secondClassName = secondClassName;
+	}
+
+	public ProductInfo getProductInfo() {
+		return productInfo;
+	}
+
+	public void setProductInfo(ProductInfo productInfo) {
+		this.productInfo = productInfo;
+	}
 }
